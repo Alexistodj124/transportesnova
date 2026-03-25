@@ -1,0 +1,1071 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transportes NOVA</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Progress Bar -->
+    <div class="scroll-progress" id="scrollProgress"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-logo">TRI<span class="accent">ASPECT</span></div>
+        <div class="nav-links">
+            <a href="#hero">Inicio</a>
+            <a href="#metodologias">Metodologías</a>
+            <a href="#scrum">Scrum</a>
+            <a href="#kanban">Kanban</a>
+            <a href="#scrumban">Scrumban</a>
+            <a href="#costos">Costos</a>
+            <a href="#sla">SLA</a>
+        </div>
+        <button class="nav-toggle" id="navToggle" aria-label="Menú">
+            <span></span><span></span><span></span>
+        </button>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="#hero">Inicio</a>
+        <a href="#metodologias">Metodologías</a>
+        <a href="#scrum">Scrum</a>
+        <a href="#kanban">Kanban</a>
+        <a href="#scrumban">Scrumban</a>
+        <a href="#costos">Costos</a>
+        <a href="#sla">SLA</a>
+    </div>
+
+    <!-- HERO -->
+    <section class="hero" id="hero">
+        <div class="hero-bg-shapes">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+            <div class="shape shape-3"></div>
+        </div>
+        <div class="hero-content">
+            <div class="hero-badge animate-on-scroll">Presentación Ejecutiva</div>
+            <h1 class="hero-title animate-on-scroll">
+                <span class="gradient-text">Transportes NOVA</span>
+            </h1>
+            <p class="hero-subtitle animate-on-scroll">Análisis comparativo de metodologías ágiles: Scrum, Kanban y Scrumban para la toma de decisiones gerenciales</p>
+            <div class="hero-stats">
+                <div class="hero-stat animate-on-scroll">
+                    <span class="hero-stat-number counter" data-target="92">0</span>
+                    <span class="hero-stat-label">Historias de Usuario</span>
+                </div>
+                <div class="hero-stat animate-on-scroll" style="animation-delay: 0.1s">
+                    <span class="hero-stat-number counter" data-target="517">0</span>
+                    <span class="hero-stat-label">Story Points</span>
+                </div>
+                <div class="hero-stat animate-on-scroll" style="animation-delay: 0.2s">
+                    <span class="hero-stat-number counter" data-target="10">0</span>
+                    <span class="hero-stat-label">Épicas</span>
+                </div>
+                <div class="hero-stat animate-on-scroll" style="animation-delay: 0.3s">
+                    <span class="hero-stat-number counter" data-target="3">0</span>
+                    <span class="hero-stat-label">Metodologías</span>
+                </div>
+            </div>
+            <div class="hero-buttons animate-on-scroll">
+                <a href="#metodologias" class="btn btn-primary">Explorar Metodologías</a>
+                <a href="#costos" class="btn btn-outline">Ver Costos</a>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <div class="mouse">
+                <div class="wheel"></div>
+            </div>
+            <span>Desliza hacia abajo</span>
+        </div>
+    </section>
+
+    <!-- METODOLOGÍAS OVERVIEW -->
+    <section class="section" id="metodologias">
+        <div class="container">
+            <div class="section-header animate-on-scroll">
+                <span class="section-tag">Vista General</span>
+                <h2 class="section-title">Tres Enfoques, <span class="gradient-text">Un Objetivo</span></h2>
+                <p class="section-subtitle">Cada metodología ofrece un enfoque diferente para gestionar el desarrollo del sistema</p>
+            </div>
+            <div class="metodologias-grid">
+                <div class="metodo-card animate-on-scroll slide-left" data-color="scrum">
+                    <div class="metodo-icon">
+                        <svg viewBox="0 0 60 60" fill="none"><circle cx="30" cy="30" r="28" stroke="currentColor" stroke-width="2" stroke-dasharray="8 4"/><path d="M20 30 L28 38 L40 22" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </div>
+                    <h3>Scrum</h3>
+                    <p>Iteraciones fijas de 2 semanas. Roles definidos. Ceremonias estructuradas. Control y predictibilidad.</p>
+                    <div class="metodo-tags">
+                        <span class="tag">17 Sprints</span>
+                        <span class="tag">34 Semanas</span>
+                        <span class="tag">35 SP/Sprint</span>
+                    </div>
+                    <div class="metodo-bar">
+                        <div class="bar-fill" data-width="90" style="background: var(--scrum)"></div>
+                        <span>Control: 90%</span>
+                    </div>
+                    <div class="metodo-bar">
+                        <div class="bar-fill" data-width="50" style="background: var(--scrum)"></div>
+                        <span>Flexibilidad: 50%</span>
+                    </div>
+                </div>
+                <div class="metodo-card animate-on-scroll" data-color="kanban">
+                    <div class="metodo-icon">
+                        <svg viewBox="0 0 60 60" fill="none"><rect x="5" y="10" width="15" height="40" rx="3" stroke="currentColor" stroke-width="2"/><rect x="23" y="15" width="15" height="35" rx="3" stroke="currentColor" stroke-width="2"/><rect x="41" y="8" width="15" height="42" rx="3" stroke="currentColor" stroke-width="2"/></svg>
+                    </div>
+                    <h3>Kanban</h3>
+                    <p>Flujo continuo. Priorización dinámica. Sin iteraciones fijas. Visibilidad total del trabajo en progreso.</p>
+                    <div class="metodo-tags">
+                        <span class="tag">Flujo Continuo</span>
+                        <span class="tag">WIP Limits</span>
+                        <span class="tag">QA Integrado</span>
+                    </div>
+                    <div class="metodo-bar">
+                        <div class="bar-fill" data-width="55" style="background: var(--kanban)"></div>
+                        <span>Control: 55%</span>
+                    </div>
+                    <div class="metodo-bar">
+                        <div class="bar-fill" data-width="95" style="background: var(--kanban)"></div>
+                        <span>Flexibilidad: 95%</span>
+                    </div>
+                </div>
+                <div class="metodo-card animate-on-scroll slide-right" data-color="scrumban">
+                    <div class="metodo-icon">
+                        <svg viewBox="0 0 60 60" fill="none"><circle cx="30" cy="30" r="28" stroke="currentColor" stroke-width="2"/><line x1="30" y1="2" x2="30" y2="58" stroke="currentColor" stroke-width="1.5" stroke-dasharray="4 3"/><rect x="10" y="20" width="16" height="8" rx="2" stroke="currentColor" stroke-width="1.5"/><rect x="34" y="32" width="16" height="8" rx="2" stroke="currentColor" stroke-width="1.5"/></svg>
+                    </div>
+                    <h3>Scrumban</h3>
+                    <p>Lo mejor de ambos mundos. Estructura de Scrum con flexibilidad de Kanban. Ciclos de revisión quincenales.</p>
+                    <div class="metodo-tags">
+                        <span class="tag">Híbrido</span>
+                        <span class="tag">WIP + Ciclos</span>
+                        <span class="tag">30 SP/Ciclo</span>
+                    </div>
+                    <div class="metodo-bar">
+                        <div class="bar-fill" data-width="80" style="background: var(--scrumban)"></div>
+                        <span>Control: 80%</span>
+                    </div>
+                    <div class="metodo-bar">
+                        <div class="bar-fill" data-width="85" style="background: var(--scrumban)"></div>
+                        <span>Flexibilidad: 85%</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- EQUIPO -->
+    <section class="section section-dark" id="equipo">
+        <div class="container">
+            <div class="section-header animate-on-scroll">
+                <span class="section-tag">Recursos Humanos</span>
+                <h2 class="section-title">Equipo del <span class="gradient-text">Proyecto</span></h2>
+            </div>
+            <div class="equipo-comparison">
+                <div class="equipo-col animate-on-scroll slide-left">
+                    <h3 class="equipo-metodo" style="color: var(--scrum)">Scrum</h3>
+                    <div class="role-card">
+                        <div class="role-icon po">PO</div>
+                        <div>
+                            <strong>Product Owner</strong>
+                            <span>Visión del producto y backlog</span>
+                        </div>
+                    </div>
+                    <div class="role-card">
+                        <div class="role-icon sm">SM</div>
+                        <div>
+                            <strong>Scrum Master</strong>
+                            <span>Facilitador y coach ágil</span>
+                        </div>
+                    </div>
+                    <div class="role-card">
+                        <div class="role-icon sr">SR</div>
+                        <div>
+                            <strong>2 Developers Senior</strong>
+                            <span>18–20 SP / sprint c/u</span>
+                        </div>
+                    </div>
+                    <div class="role-card">
+                        <div class="role-icon jr">JR</div>
+                        <div>
+                            <strong>2 Developers Junior</strong>
+                            <span>10–12 SP / sprint c/u</span>
+                        </div>
+                    </div>
+                    <div class="capacity-box">
+                        <div class="capacity-number counter" data-target="35">0</div>
+                        <div class="capacity-label">SP / Sprint (objetivo)</div>
+                        <div class="capacity-range">Rango: 56 – 64 SP conservador</div>
+                    </div>
+                </div>
+                <div class="equipo-col animate-on-scroll">
+                    <h3 class="equipo-metodo" style="color: var(--kanban)">Kanban</h3>
+                    <div class="role-card">
+                        <div class="role-icon fc">FC</div>
+                        <div>
+                            <strong>Facilitador</strong>
+                            <span>Gestión de flujo y mejora</span>
+                        </div>
+                    </div>
+                    <div class="role-card">
+                        <div class="role-icon pm">PM</div>
+                        <div>
+                            <strong>Project Manager</strong>
+                            <span>Coordinación y seguimiento</span>
+                        </div>
+                    </div>
+                    <div class="role-card">
+                        <div class="role-icon sr">SR</div>
+                        <div>
+                            <strong>2 Developers Senior</strong>
+                            <span>Desarrollo técnico avanzado</span>
+                        </div>
+                    </div>
+                    <div class="role-card">
+                        <div class="role-icon jr">JR</div>
+                        <div>
+                            <strong>2 Developers Junior</strong>
+                            <span>Desarrollo y aprendizaje</span>
+                        </div>
+                    </div>
+                    <div class="role-card">
+                        <div class="role-icon qa">QA</div>
+                        <div>
+                            <strong>1 QA</strong>
+                            <span>Validación integrada al flujo</span>
+                        </div>
+                    </div>
+                    <div class="capacity-box" style="border-color: var(--kanban)">
+                        <div class="capacity-number" style="color: var(--kanban)">∞</div>
+                        <div class="capacity-label">Flujo continuo</div>
+                        <div class="capacity-range">Sin iteraciones fijas</div>
+                    </div>
+                </div>
+                <div class="equipo-col animate-on-scroll slide-right">
+                    <h3 class="equipo-metodo" style="color: var(--scrumban)">Scrumban</h3>
+                    <div class="role-card">
+                        <div class="role-icon po">PO</div>
+                        <div>
+                            <strong>Product Owner</strong>
+                            <span>Priorización continua</span>
+                        </div>
+                    </div>
+                    <div class="role-card">
+                        <div class="role-icon sm">SbM</div>
+                        <div>
+                            <strong>Scrumban Master</strong>
+                            <span>Facilitador híbrido</span>
+                        </div>
+                    </div>
+                    <div class="role-card">
+                        <div class="role-icon sr">SR</div>
+                        <div>
+                            <strong>2 Developers Senior</strong>
+                            <span>18–20 SP / ciclo c/u</span>
+                        </div>
+                    </div>
+                    <div class="role-card">
+                        <div class="role-icon jr">JR</div>
+                        <div>
+                            <strong>2 Developers Junior</strong>
+                            <span>10–12 SP / ciclo c/u</span>
+                        </div>
+                    </div>
+                    <div class="role-card">
+                        <div class="role-icon qa">QA</div>
+                        <div>
+                            <strong>1 QA</strong>
+                            <span>Validación integrada</span>
+                        </div>
+                    </div>
+                    <div class="capacity-box" style="border-color: var(--scrumban)">
+                        <div class="capacity-number counter" data-target="30" style="color: var(--scrumban)">0</div>
+                        <div class="capacity-label">SP / Ciclo (objetivo)</div>
+                        <div class="capacity-range">Rango: 56 – 64 SP estimado</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SCRUM SECTION -->
+    <section class="section" id="scrum">
+        <div class="container">
+            <div class="section-header animate-on-scroll">
+                <span class="section-tag" style="background: var(--scrum)">Scrum</span>
+                <h2 class="section-title">Desarrollo <span class="gradient-text">Iterativo e Incremental</span></h2>
+                <p class="section-subtitle">Estructura de 17 sprints de 2 semanas con carga balanceada y coherente con la velocidad del equipo</p>
+            </div>
+
+            <!-- Scrum Key Metrics -->
+            <div class="metrics-row animate-on-scroll">
+                <div class="metric-card">
+                    <div class="metric-value counter" data-target="17">0</div>
+                    <div class="metric-label">Sprints</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value counter" data-target="34">0</div>
+                    <div class="metric-label">Semanas</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value counter" data-target="517">0</div>
+                    <div class="metric-label">Story Points</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value counter" data-target="92">0</div>
+                    <div class="metric-label">Historias</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value counter" data-target="35">0</div>
+                    <div class="metric-label">SP / Sprint</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">1.10</div>
+                    <div class="metric-label">Factor Holgura</div>
+                </div>
+            </div>
+
+            <!-- Supuestos -->
+            <div class="assumptions-bar animate-on-scroll">
+                <div class="assumption"><strong>Velocidad:</strong> 35 SP/sprint</div>
+                <div class="assumption"><strong>Sprint:</strong> 2 semanas</div>
+                <div class="assumption"><strong>Holgura:</strong> 1.10</div>
+                <div class="assumption"><strong>Medida:</strong> Story Points</div>
+                <div class="assumption"><strong>Enfoque:</strong> Incremental por módulos</div>
+            </div>
+
+            <!-- Épicas Grid -->
+            <div class="section-subheader animate-on-scroll">
+                <h3>Product Backlog: 10 Épicas</h3>
+            </div>
+            <div class="epicas-grid">
+                <div class="epica-card animate-on-scroll" style="--delay: 0s">
+                    <div class="epica-code">EP01</div>
+                    <div class="epica-name">Usuarios, Roles y Permisos</div>
+                    <div class="epica-stats"><span>9 HU</span><span>45 SP</span></div>
+                    <div class="epica-bar"><div class="epica-fill" data-width="8.7"></div></div>
+                </div>
+                <div class="epica-card animate-on-scroll" style="--delay: 0.05s">
+                    <div class="epica-code">EP02</div>
+                    <div class="epica-name">Gestión de Flota y Unidades</div>
+                    <div class="epica-stats"><span>10 HU</span><span>50 SP</span></div>
+                    <div class="epica-bar"><div class="epica-fill" data-width="9.7"></div></div>
+                </div>
+                <div class="epica-card animate-on-scroll" style="--delay: 0.1s">
+                    <div class="epica-code">EP03</div>
+                    <div class="epica-name">Gestión de Pilotos</div>
+                    <div class="epica-stats"><span>9 HU</span><span>50 SP</span></div>
+                    <div class="epica-bar"><div class="epica-fill" data-width="9.7"></div></div>
+                </div>
+                <div class="epica-card animate-on-scroll" style="--delay: 0.15s">
+                    <div class="epica-code">EP04</div>
+                    <div class="epica-name">Rutas y Planificación Operativa</div>
+                    <div class="epica-stats"><span>11 HU</span><span>70 SP</span></div>
+                    <div class="epica-bar"><div class="epica-fill" data-width="13.5"></div></div>
+                </div>
+                <div class="epica-card animate-on-scroll" style="--delay: 0.2s">
+                    <div class="epica-code">EP05</div>
+                    <div class="epica-name">Monitoreo en Tiempo Real</div>
+                    <div class="epica-stats"><span>9 HU</span><span>60 SP</span></div>
+                    <div class="epica-bar"><div class="epica-fill" data-width="11.6"></div></div>
+                </div>
+                <div class="epica-card animate-on-scroll" style="--delay: 0.25s">
+                    <div class="epica-code">EP06</div>
+                    <div class="epica-name">Gestión de Incidencias</div>
+                    <div class="epica-stats"><span>8 HU</span><span>42 SP</span></div>
+                    <div class="epica-bar"><div class="epica-fill" data-width="8.1"></div></div>
+                </div>
+                <div class="epica-card animate-on-scroll" style="--delay: 0.3s">
+                    <div class="epica-code">EP07</div>
+                    <div class="epica-name">Mantenimiento Preventivo y Correctivo</div>
+                    <div class="epica-stats"><span>10 HU</span><span>55 SP</span></div>
+                    <div class="epica-bar"><div class="epica-fill" data-width="10.6"></div></div>
+                </div>
+                <div class="epica-card animate-on-scroll" style="--delay: 0.35s">
+                    <div class="epica-code">EP08</div>
+                    <div class="epica-name">Alertas y Notificaciones</div>
+                    <div class="epica-stats"><span>8 HU</span><span>44 SP</span></div>
+                    <div class="epica-bar"><div class="epica-fill" data-width="8.5"></div></div>
+                </div>
+                <div class="epica-card animate-on-scroll" style="--delay: 0.4s">
+                    <div class="epica-code">EP09</div>
+                    <div class="epica-name">Dashboard Ejecutivo y Reportes</div>
+                    <div class="epica-stats"><span>9 HU</span><span>52 SP</span></div>
+                    <div class="epica-bar"><div class="epica-fill" data-width="10.1"></div></div>
+                </div>
+                <div class="epica-card animate-on-scroll" style="--delay: 0.45s">
+                    <div class="epica-code">EP10</div>
+                    <div class="epica-name">Trazabilidad de Encomiendas</div>
+                    <div class="epica-stats"><span>9 HU</span><span>49 SP</span></div>
+                    <div class="epica-bar"><div class="epica-fill" data-width="9.5"></div></div>
+                </div>
+            </div>
+
+            <!-- SP Distribution -->
+            <div class="section-subheader animate-on-scroll">
+                <h3>Estimación por Story Points</h3>
+            </div>
+            <div class="sp-sizes animate-on-scroll">
+                <div class="sp-badge sp-3">3 SP</div>
+                <div class="sp-badge sp-5">5 SP</div>
+                <div class="sp-badge sp-8">8 SP</div>
+                <div class="sp-badge sp-13">13 SP</div>
+            </div>
+
+            <!-- Sprint Timeline -->
+            <div class="section-subheader animate-on-scroll">
+                <h3>Timeline de 17 Sprints</h3>
+            </div>
+            <div class="sprint-timeline">
+                <div class="timeline-line"></div>
+
+                <div class="sprint-card animate-on-scroll" style="--delay: 0s">
+                    <div class="sprint-marker"><div class="sprint-number">1</div></div>
+                    <div class="sprint-content">
+                        <div class="sprint-header"><h4>Sprint 1</h4><div class="sprint-sp">35 SP</div></div>
+                        <p>Base administrativa del sistema: usuarios, roles y permisos</p>
+                        <div class="sprint-complexity media">Media</div>
+                        <div class="sprint-bar"><div class="sprint-fill" style="width: 97%"></div></div>
+                    </div>
+                </div>
+
+                <div class="sprint-card animate-on-scroll" style="--delay: 0.04s">
+                    <div class="sprint-marker"><div class="sprint-number">2</div></div>
+                    <div class="sprint-content">
+                        <div class="sprint-header"><h4>Sprint 2</h4><div class="sprint-sp">35 SP</div></div>
+                        <p>Gestión inicial de flota y configuración básica</p>
+                        <div class="sprint-complexity media">Media</div>
+                        <div class="sprint-bar"><div class="sprint-fill" style="width: 97%"></div></div>
+                    </div>
+                </div>
+
+                <div class="sprint-card animate-on-scroll" style="--delay: 0.08s">
+                    <div class="sprint-marker"><div class="sprint-number">3</div></div>
+                    <div class="sprint-content">
+                        <div class="sprint-header"><h4>Sprint 3</h4><div class="sprint-sp">34 SP</div></div>
+                        <p>Gestión de pilotos y validaciones principales</p>
+                        <div class="sprint-complexity media-alta">Media-Alta</div>
+                        <div class="sprint-bar"><div class="sprint-fill" style="width: 94%"></div></div>
+                    </div>
+                </div>
+
+                <div class="sprint-card animate-on-scroll" style="--delay: 0.12s">
+                    <div class="sprint-marker"><div class="sprint-number">4</div></div>
+                    <div class="sprint-content">
+                        <div class="sprint-header"><h4>Sprint 4</h4><div class="sprint-sp">35 SP</div></div>
+                        <p>Planificación de rutas y programación operativa inicial</p>
+                        <div class="sprint-complexity alta">Alta</div>
+                        <div class="sprint-bar"><div class="sprint-fill" style="width: 97%"></div></div>
+                    </div>
+                </div>
+
+                <div class="sprint-card animate-on-scroll" style="--delay: 0.16s">
+                    <div class="sprint-marker"><div class="sprint-number">5</div></div>
+                    <div class="sprint-content">
+                        <div class="sprint-header"><h4>Sprint 5</h4><div class="sprint-sp">36 SP</div></div>
+                        <p>Expansión de rutas y trazabilidad inicial de encomiendas</p>
+                        <div class="sprint-complexity alta">Alta</div>
+                        <div class="sprint-bar"><div class="sprint-fill" style="width: 100%"></div></div>
+                    </div>
+                </div>
+
+                <div class="sprint-card animate-on-scroll" style="--delay: 0.2s">
+                    <div class="sprint-marker"><div class="sprint-number">6</div></div>
+                    <div class="sprint-content">
+                        <div class="sprint-header"><h4>Sprint 6</h4><div class="sprint-sp">35 SP</div></div>
+                        <p>Optimización de rutas y lógica operativa avanzada</p>
+                        <div class="sprint-complexity alta">Alta</div>
+                        <div class="sprint-bar"><div class="sprint-fill" style="width: 97%"></div></div>
+                    </div>
+                </div>
+
+                <div class="sprint-card animate-on-scroll" style="--delay: 0.24s">
+                    <div class="sprint-marker"><div class="sprint-number">7</div></div>
+                    <div class="sprint-content">
+                        <div class="sprint-header"><h4>Sprint 7</h4><div class="sprint-sp">34 SP</div></div>
+                        <p>Monitoreo en tiempo real (base)</p>
+                        <div class="sprint-complexity alta">Alta</div>
+                        <div class="sprint-bar"><div class="sprint-fill" style="width: 94%"></div></div>
+                    </div>
+                </div>
+
+                <div class="sprint-card animate-on-scroll" style="--delay: 0.28s">
+                    <div class="sprint-marker"><div class="sprint-number">8</div></div>
+                    <div class="sprint-content">
+                        <div class="sprint-header"><h4>Sprint 8</h4><div class="sprint-sp">35 SP</div></div>
+                        <p>Mejoras en monitoreo y seguimiento operativo</p>
+                        <div class="sprint-complexity alta">Alta</div>
+                        <div class="sprint-bar"><div class="sprint-fill" style="width: 97%"></div></div>
+                    </div>
+                </div>
+
+                <div class="sprint-card animate-on-scroll" style="--delay: 0.32s">
+                    <div class="sprint-marker"><div class="sprint-number">9</div></div>
+                    <div class="sprint-content">
+                        <div class="sprint-header"><h4>Sprint 9</h4><div class="sprint-sp">35 SP</div></div>
+                        <p>Gestión de incidencias: registro y seguimiento</p>
+                        <div class="sprint-complexity media-alta">Media-Alta</div>
+                        <div class="sprint-bar"><div class="sprint-fill" style="width: 97%"></div></div>
+                    </div>
+                </div>
+
+                <div class="sprint-card animate-on-scroll" style="--delay: 0.36s">
+                    <div class="sprint-marker"><div class="sprint-number">10</div></div>
+                    <div class="sprint-content">
+                        <div class="sprint-header"><h4>Sprint 10</h4><div class="sprint-sp">36 SP</div></div>
+                        <p>Incidencias avanzadas y control de eventos críticos</p>
+                        <div class="sprint-complexity alta">Alta</div>
+                        <div class="sprint-bar"><div class="sprint-fill" style="width: 100%"></div></div>
+                    </div>
+                </div>
+
+                <div class="sprint-card animate-on-scroll" style="--delay: 0.4s">
+                    <div class="sprint-marker"><div class="sprint-number">11</div></div>
+                    <div class="sprint-content">
+                        <div class="sprint-header"><h4>Sprint 11</h4><div class="sprint-sp">35 SP</div></div>
+                        <p>Mantenimiento preventivo</p>
+                        <div class="sprint-complexity media-alta">Media-Alta</div>
+                        <div class="sprint-bar"><div class="sprint-fill" style="width: 97%"></div></div>
+                    </div>
+                </div>
+
+                <div class="sprint-card animate-on-scroll" style="--delay: 0.44s">
+                    <div class="sprint-marker"><div class="sprint-number">12</div></div>
+                    <div class="sprint-content">
+                        <div class="sprint-header"><h4>Sprint 12</h4><div class="sprint-sp">34 SP</div></div>
+                        <p>Mantenimiento correctivo y gestión de fallas</p>
+                        <div class="sprint-complexity alta">Alta</div>
+                        <div class="sprint-bar"><div class="sprint-fill" style="width: 94%"></div></div>
+                    </div>
+                </div>
+
+                <div class="sprint-card animate-on-scroll" style="--delay: 0.48s">
+                    <div class="sprint-marker"><div class="sprint-number">13</div></div>
+                    <div class="sprint-content">
+                        <div class="sprint-header"><h4>Sprint 13</h4><div class="sprint-sp">35 SP</div></div>
+                        <p>Alertas y notificaciones operativas</p>
+                        <div class="sprint-complexity media">Media</div>
+                        <div class="sprint-bar"><div class="sprint-fill" style="width: 97%"></div></div>
+                    </div>
+                </div>
+
+                <div class="sprint-card animate-on-scroll" style="--delay: 0.52s">
+                    <div class="sprint-marker"><div class="sprint-number">14</div></div>
+                    <div class="sprint-content">
+                        <div class="sprint-header"><h4>Sprint 14</h4><div class="sprint-sp">35 SP</div></div>
+                        <p>Configuración avanzada de alertas</p>
+                        <div class="sprint-complexity media">Media</div>
+                        <div class="sprint-bar"><div class="sprint-fill" style="width: 97%"></div></div>
+                    </div>
+                </div>
+
+                <div class="sprint-card animate-on-scroll" style="--delay: 0.56s">
+                    <div class="sprint-marker"><div class="sprint-number">15</div></div>
+                    <div class="sprint-content">
+                        <div class="sprint-header"><h4>Sprint 15</h4><div class="sprint-sp">36 SP</div></div>
+                        <p>Dashboard ejecutivo</p>
+                        <div class="sprint-complexity media-alta">Media-Alta</div>
+                        <div class="sprint-bar"><div class="sprint-fill" style="width: 100%"></div></div>
+                    </div>
+                </div>
+
+                <div class="sprint-card animate-on-scroll" style="--delay: 0.6s">
+                    <div class="sprint-marker"><div class="sprint-number">16</div></div>
+                    <div class="sprint-content">
+                        <div class="sprint-header"><h4>Sprint 16</h4><div class="sprint-sp">35 SP</div></div>
+                        <p>Reportes y analítica avanzada</p>
+                        <div class="sprint-complexity media-alta">Media-Alta</div>
+                        <div class="sprint-bar"><div class="sprint-fill" style="width: 97%"></div></div>
+                    </div>
+                </div>
+
+                <div class="sprint-card animate-on-scroll" style="--delay: 0.64s">
+                    <div class="sprint-marker"><div class="sprint-number">17</div></div>
+                    <div class="sprint-content">
+                        <div class="sprint-header"><h4>Sprint 17</h4><div class="sprint-sp">32 SP</div></div>
+                        <p>Pruebas finales, ajustes y estabilización del sistema</p>
+                        <div class="sprint-complexity media">Media</div>
+                        <div class="sprint-bar"><div class="sprint-fill" style="width: 89%"></div></div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- KANBAN SECTION -->
+    <section class="section section-dark" id="kanban">
+        <div class="container">
+            <div class="section-header animate-on-scroll">
+                <span class="section-tag" style="background: var(--kanban)">Kanban</span>
+                <h2 class="section-title">Flujo <span class="gradient-text">Continuo y Visual</span></h2>
+                <p class="section-subtitle">Priorización dinámica y entrega continua sin iteraciones fijas</p>
+            </div>
+
+            <!-- Kanban Principles -->
+            <div class="kanban-principles animate-on-scroll">
+                <div class="principle">
+                    <div class="principle-icon">📊</div>
+                    <strong>Visualización Completa</strong>
+                </div>
+                <div class="principle">
+                    <div class="principle-icon">🔄</div>
+                    <strong>Priorización Dinámica</strong>
+                </div>
+                <div class="principle">
+                    <div class="principle-icon">⚡</div>
+                    <strong>Entrega Continua</strong>
+                </div>
+                <div class="principle">
+                    <div class="principle-icon">🎯</div>
+                    <strong>Control de WIP</strong>
+                </div>
+                <div class="principle">
+                    <div class="principle-icon">🔍</div>
+                    <strong>QA Integrado</strong>
+                </div>
+            </div>
+
+            <!-- Kanban Board -->
+            <div class="kanban-board animate-on-scroll">
+                <div class="kanban-column">
+                    <div class="kanban-col-header backlog-col">
+                        <h4>Backlog</h4>
+                        <span class="kanban-count">92 items</span>
+                    </div>
+                    <div class="kanban-cards">
+                        <div class="kanban-item" style="border-left-color: #4A90D9">Autenticación y login</div>
+                        <div class="kanban-item" style="border-left-color: #4A90D9">Gestión de permisos</div>
+                        <div class="kanban-item" style="border-left-color: #E91E8C">Registro de vehículos</div>
+                        <div class="kanban-item" style="border-left-color: #4CAF50">Alta de pilotos</div>
+                        <div class="kanban-item" style="border-left-color: #78909C">Creación de rutas</div>
+                        <div class="kanban-item" style="border-left-color: #1A237E">GPS tracking</div>
+                        <div class="kanban-item" style="border-left-color: #F44336">Reportar incidencia</div>
+                        <div class="kanban-item more-items">+85 más</div>
+                    </div>
+                </div>
+                <div class="kanban-column">
+                    <div class="kanban-col-header todo-col">
+                        <h4>To Do</h4>
+                    </div>
+                    <div class="kanban-cards">
+                        <div class="kanban-item" style="border-left-color: #E91E8C">Estado de vehículos</div>
+                        <div class="kanban-item" style="border-left-color: #4CAF50">Asignación piloto-ruta</div>
+                        <div class="kanban-item" style="border-left-color: #FF9800">Programa mantenimiento</div>
+                    </div>
+                </div>
+                <div class="kanban-column">
+                    <div class="kanban-col-header progress-col">
+                        <h4>In Progress</h4>
+                    </div>
+                    <div class="kanban-cards">
+                        <div class="kanban-item" style="border-left-color: #4A90D9">Roles y accesos</div>
+                        <div class="kanban-item" style="border-left-color: #78909C">Planificación rutas</div>
+                    </div>
+                </div>
+                <div class="kanban-column">
+                    <div class="kanban-col-header test-col">
+                        <h4>Test</h4>
+                    </div>
+                    <div class="kanban-cards">
+                        <div class="kanban-item" style="border-left-color: #4A90D9">Login seguro</div>
+                    </div>
+                </div>
+                <div class="kanban-column">
+                    <div class="kanban-col-header done-col">
+                        <h4>Done</h4>
+                    </div>
+                    <div class="kanban-cards">
+                        <div class="kanban-item done-item" style="border-left-color: #4CAF50">Setup proyecto</div>
+                        <div class="kanban-item done-item" style="border-left-color: #4A90D9">DB usuarios</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Color Legend -->
+            <div class="color-legend animate-on-scroll">
+                <h4>Módulos Funcionales</h4>
+                <div class="legend-grid">
+                    <div class="legend-item"><span class="legend-dot" style="background: #4A90D9"></span>Gestión de usuarios</div>
+                    <div class="legend-item"><span class="legend-dot" style="background: #E91E8C"></span>Gestión de flota</div>
+                    <div class="legend-item"><span class="legend-dot" style="background: #4CAF50"></span>Gestión de pilotos</div>
+                    <div class="legend-item"><span class="legend-dot" style="background: #78909C"></span>Gestión de rutas</div>
+                    <div class="legend-item"><span class="legend-dot" style="background: #1A237E"></span>Monitoreo en tiempo real</div>
+                    <div class="legend-item"><span class="legend-dot" style="background: #F44336"></span>Gestión de incidencias</div>
+                    <div class="legend-item"><span class="legend-dot" style="background: #FF9800"></span>Mantenimiento</div>
+                    <div class="legend-item"><span class="legend-dot" style="background: #FDD835"></span>Alertas y notificaciones</div>
+                    <div class="legend-item"><span class="legend-dot" style="background: #9C27B0"></span>Trazabilidad encomiendas</div>
+                    <div class="legend-item"><span class="legend-dot" style="background: #8BC34A"></span>Dashboard y reportes</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SCRUMBAN SECTION -->
+    <section class="section" id="scrumban">
+        <div class="container">
+            <div class="section-header animate-on-scroll">
+                <span class="section-tag" style="background: var(--scrumban)">Scrumban</span>
+                <h2 class="section-title">Lo Mejor de <span class="gradient-text">Ambos Mundos</span></h2>
+                <p class="section-subtitle">Estructura de Scrum + Flexibilidad de Kanban = Control y agilidad</p>
+            </div>
+
+            <!-- Hybrid Visual -->
+            <div class="hybrid-visual animate-on-scroll">
+                <div class="hybrid-side scrum-side">
+                    <h4>De Scrum toma...</h4>
+                    <ul>
+                        <li>Ciclos de revisión quincenales</li>
+                        <li>Product Owner para priorización</li>
+                        <li>Reuniones breves de seguimiento</li>
+                        <li>Medición por capacidad de entrega</li>
+                    </ul>
+                </div>
+                <div class="hybrid-center">
+                    <div class="hybrid-merge">
+                        <span>SCRUMBAN</span>
+                    </div>
+                </div>
+                <div class="hybrid-side kanban-side">
+                    <h4>De Kanban toma...</h4>
+                    <ul>
+                        <li>Tablero visual de flujo</li>
+                        <li>Límites WIP por columna</li>
+                        <li>Flujo continuo sin sprints rígidos</li>
+                        <li>Priorización continua del backlog</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Scrumban Metrics -->
+            <div class="metrics-row animate-on-scroll">
+                <div class="metric-card">
+                    <div class="metric-value counter" data-target="92">0</div>
+                    <div class="metric-label">Historias</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value counter" data-target="517">0</div>
+                    <div class="metric-label">Story Points</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value counter" data-target="8">0</div>
+                    <div class="metric-label">Ciclos Revisión</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value counter" data-target="30">0</div>
+                    <div class="metric-label">SP / Ciclo</div>
+                </div>
+            </div>
+
+            <!-- Scrumban Board -->
+            <div class="section-subheader animate-on-scroll">
+                <h3>Tablero Scrumban</h3>
+            </div>
+            <div class="scrumban-board animate-on-scroll">
+                <div class="scrumban-column">
+                    <div class="scrumban-col-header">
+                        <h4>Backlog</h4>
+                        <span class="wip-badge">Sin límite</span>
+                    </div>
+                    <div class="scrumban-cards">
+                        <div class="scrumban-item" style="--card-color: #4A90D9">Gestión de permisos avanzados</div>
+                        <div class="scrumban-item" style="--card-color: #E91E8C">Historial de vehículos</div>
+                        <div class="scrumban-item" style="--card-color: #78909C">Optimización de rutas</div>
+                        <div class="scrumban-item" style="--card-color: #1A237E">Alertas GPS</div>
+                        <div class="scrumban-item" style="--card-color: #F44336">Escalamiento incidencias</div>
+                        <div class="scrumban-item more-items">+72 más</div>
+                    </div>
+                </div>
+                <div class="scrumban-column">
+                    <div class="scrumban-col-header">
+                        <h4>Ready</h4>
+                        <span class="wip-badge wip-limit">WIP: 10</span>
+                    </div>
+                    <div class="scrumban-cards">
+                        <div class="scrumban-item" style="--card-color: #4CAF50">Validación de licencias</div>
+                        <div class="scrumban-item" style="--card-color: #FF9800">Calendario mantenimiento</div>
+                        <div class="scrumban-item" style="--card-color: #FDD835">Config. notificaciones</div>
+                    </div>
+                </div>
+                <div class="scrumban-column">
+                    <div class="scrumban-col-header">
+                        <h4>In Progress</h4>
+                        <span class="wip-badge wip-limit">WIP: 4</span>
+                    </div>
+                    <div class="scrumban-cards">
+                        <div class="scrumban-item" style="--card-color: #4A90D9">CRUD Usuarios</div>
+                        <div class="scrumban-item" style="--card-color: #E91E8C">Registro flota</div>
+                        <div class="scrumban-item" style="--card-color: #4CAF50">Perfil piloto</div>
+                    </div>
+                </div>
+                <div class="scrumban-column">
+                    <div class="scrumban-col-header">
+                        <h4>Code Review</h4>
+                        <span class="wip-badge wip-limit">WIP: 3</span>
+                    </div>
+                    <div class="scrumban-cards">
+                        <div class="scrumban-item" style="--card-color: #4A90D9">Login y autenticación</div>
+                        <div class="scrumban-item" style="--card-color: #78909C">API de rutas</div>
+                    </div>
+                </div>
+                <div class="scrumban-column">
+                    <div class="scrumban-col-header">
+                        <h4>Test</h4>
+                        <span class="wip-badge wip-limit">WIP: 3</span>
+                    </div>
+                    <div class="scrumban-cards">
+                        <div class="scrumban-item" style="--card-color: #4A90D9">Roles y permisos</div>
+                    </div>
+                </div>
+                <div class="scrumban-column">
+                    <div class="scrumban-col-header done-header">
+                        <h4>Done</h4>
+                        <span class="wip-badge">✓</span>
+                    </div>
+                    <div class="scrumban-cards">
+                        <div class="scrumban-item done-item" style="--card-color: #4CAF50">Setup inicial</div>
+                        <div class="scrumban-item done-item" style="--card-color: #4A90D9">Modelo de datos</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Color Legend Scrumban -->
+            <div class="color-legend animate-on-scroll">
+                <h4>Módulos Funcionales</h4>
+                <div class="legend-grid">
+                    <div class="legend-item"><span class="legend-dot" style="background: #4A90D9"></span>Usuarios, roles y permisos</div>
+                    <div class="legend-item"><span class="legend-dot" style="background: #E91E8C"></span>Gestión de flota</div>
+                    <div class="legend-item"><span class="legend-dot" style="background: #4CAF50"></span>Gestión de pilotos</div>
+                    <div class="legend-item"><span class="legend-dot" style="background: #78909C"></span>Rutas y planificación</div>
+                    <div class="legend-item"><span class="legend-dot" style="background: #1A237E"></span>Monitoreo en tiempo real</div>
+                    <div class="legend-item"><span class="legend-dot" style="background: #F44336"></span>Gestión de incidencias</div>
+                    <div class="legend-item"><span class="legend-dot" style="background: #FF9800"></span>Mantenimiento</div>
+                    <div class="legend-item"><span class="legend-dot" style="background: #FDD835"></span>Alertas y notificaciones</div>
+                    <div class="legend-item"><span class="legend-dot" style="background: #9C27B0"></span>Dashboard y reportes</div>
+                    <div class="legend-item"><span class="legend-dot" style="background: #00BCD4"></span>Trazabilidad encomiendas</div>
+                </div>
+            </div>
+
+            <!-- Scrumban Advantages -->
+            <div class="advantages-grid animate-on-scroll">
+                <div class="advantage-card">
+                    <div class="advantage-icon">🔄</div>
+                    <h4>Flujo Continuo Controlado</h4>
+                    <p>Las historias avanzan según capacidad disponible</p>
+                </div>
+                <div class="advantage-card">
+                    <div class="advantage-icon">📋</div>
+                    <h4>Revisiones Quincenales</h4>
+                    <p>Bloques de 2 semanas para control y ajuste</p>
+                </div>
+                <div class="advantage-card">
+                    <div class="advantage-icon">🚫</div>
+                    <h4>Terminar antes de Empezar</h4>
+                    <p>Límites WIP evitan sobrecarga del equipo</p>
+                </div>
+                <div class="advantage-card">
+                    <div class="advantage-icon">🎯</div>
+                    <h4>Mejora Operativa</h4>
+                    <p>Medición por tiempos de ciclo y capacidad</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- COSTOS -->
+    <section class="section section-dark" id="costos">
+        <div class="container">
+            <div class="section-header animate-on-scroll">
+                <span class="section-tag">Inversión</span>
+                <h2 class="section-title">Comparativa de <span class="gradient-text">Costos de Inversión</span></h2>
+                <p class="section-subtitle">Análisis ejecutivo de inversión por metodología</p>
+            </div>
+            <p class="costos-baseline animate-on-scroll">92 Historias de Usuario · 517 Story Points</p>
+            <div class="costos-table animate-on-scroll">
+                <div class="costos-table-row costos-table-header">
+                    <div class="costos-table-label"></div>
+                    <div class="costos-table-cell" style="background: var(--scrum)"><strong>SCRUM</strong></div>
+                    <div class="costos-table-cell" style="background: var(--kanban)"><strong>KANBAN</strong></div>
+                    <div class="costos-table-cell" style="background: var(--scrumban)"><strong>SCRUMBAN</strong></div>
+                </div>
+                <div class="costos-table-row">
+                    <div class="costos-table-label">Tiempo de desarrollo</div>
+                    <div class="costos-table-cell"><strong class="scrum-color">7.5 meses</strong></div>
+                    <div class="costos-table-cell"><strong class="kanban-color">13 meses</strong></div>
+                    <div class="costos-table-cell"><strong class="scrumban-color">10.5 meses</strong></div>
+                </div>
+                <div class="costos-table-row">
+                    <div class="costos-table-label">Story Points / Tareas</div>
+                    <div class="costos-table-cell"><strong>517 SP</strong></div>
+                    <div class="costos-table-cell"><strong>92 tareas</strong></div>
+                    <div class="costos-table-cell"><strong>517 SP</strong></div>
+                </div>
+                <div class="costos-table-row costos-table-highlight">
+                    <div class="costos-table-label">Precio de Venta</div>
+                    <div class="costos-table-cell"><strong class="price-value">Q759,621</strong></div>
+                    <div class="costos-table-cell"><strong class="price-value">Q1,248,000</strong></div>
+                    <div class="costos-table-cell"><strong class="price-value featured-price">Q824,718</strong></div>
+                </div>
+            </div>
+            <p class="costos-note animate-on-scroll">* Precios en Quetzales (GTQ). Valores editables según negociación final.</p>
+        </div>
+    </section>
+
+    <!-- SLA -->
+    <section class="section" id="sla">
+        <div class="container">
+            <div class="section-header animate-on-scroll">
+                <span class="section-tag">Acuerdos de Nivel de Servicio</span>
+                <h2 class="section-title">SLA <span class="gradient-text">del Proyecto</span></h2>
+            </div>
+            <div class="sla-grid">
+                <div class="sla-card animate-on-scroll" style="--delay: 0s">
+                    <div class="sla-icon">⏱️</div>
+                    <h4>Disponibilidad</h4>
+                    <div class="sla-value">99.5%</div>
+                    <p>Uptime garantizado del sistema en producción</p>
+                    <div class="sla-detail">Medido mensualmente</div>
+                </div>
+                <div class="sla-card animate-on-scroll" style="--delay: 0.1s">
+                    <div class="sla-icon">🚀</div>
+                    <h4>Tiempo de Respuesta</h4>
+                    <div class="sla-value">&lt; 2s</div>
+                    <p>Tiempo máximo de carga por transacción</p>
+                    <div class="sla-detail">P95 bajo carga normal</div>
+                </div>
+                <div class="sla-card animate-on-scroll" style="--delay: 0.2s">
+                    <div class="sla-icon">🔧</div>
+                    <h4>Tiempo de Resolución</h4>
+                    <div class="sla-values-grid">
+                        <div><strong>Crítico:</strong> 4h</div>
+                        <div><strong>Alto:</strong> 8h</div>
+                        <div><strong>Medio:</strong> 24h</div>
+                        <div><strong>Bajo:</strong> 72h</div>
+                    </div>
+                </div>
+                <div class="sla-card animate-on-scroll" style="--delay: 0.3s">
+                    <div class="sla-icon">📞</div>
+                    <h4>Escalamiento</h4>
+                    <div class="sla-escalation">
+                        <div class="escalation-level">
+                            <span class="level-badge l1">N1</span>
+                            <span>Soporte técnico — 30 min</span>
+                        </div>
+                        <div class="escalation-level">
+                            <span class="level-badge l2">N2</span>
+                            <span>Líder técnico — 2h</span>
+                        </div>
+                        <div class="escalation-level">
+                            <span class="level-badge l3">N3</span>
+                            <span>Gerencia — 4h</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <p class="costos-note animate-on-scroll">* Los valores de SLA son editables. Ajuste según los acuerdos contractuales del proyecto.</p>
+        </div>
+    </section>
+
+    <!-- CIERRE -->
+    <section class="section section-dark" id="cierre">
+        <div class="container">
+            <div class="section-header animate-on-scroll">
+                <span class="section-tag">Conclusión Ejecutiva</span>
+                <h2 class="section-title">¿Cuál Metodología <span class="gradient-text">Conviene?</span></h2>
+            </div>
+            <div class="conclusion-grid">
+                <div class="conclusion-card animate-on-scroll slide-left">
+                    <div class="conclusion-icon" style="color: var(--scrum)">
+                        <svg viewBox="0 0 40 40" fill="none"><circle cx="20" cy="20" r="18" stroke="currentColor" stroke-width="2" stroke-dasharray="6 3"/></svg>
+                    </div>
+                    <h4>Scrum</h4>
+                    <p>Ideal si se necesita <strong>máximo control</strong> y predictibilidad en entregas</p>
+                    <div class="conclusion-tags">
+                        <span class="ctag">Control Alto</span>
+                        <span class="ctag">Ceremonias</span>
+                        <span class="ctag">Sprints Fijos</span>
+                    </div>
+                </div>
+                <div class="conclusion-card animate-on-scroll">
+                    <div class="conclusion-icon" style="color: var(--kanban)">
+                        <svg viewBox="0 0 40 40" fill="none"><rect x="4" y="8" width="10" height="24" rx="2" stroke="currentColor" stroke-width="2"/><rect x="16" y="12" width="10" height="20" rx="2" stroke="currentColor" stroke-width="2"/><rect x="28" y="6" width="10" height="26" rx="2" stroke="currentColor" stroke-width="2"/></svg>
+                    </div>
+                    <h4>Kanban</h4>
+                    <p>Ideal si se necesita <strong>máxima flexibilidad</strong> y respuesta rápida al cambio</p>
+                    <div class="conclusion-tags">
+                        <span class="ctag">Flujo Libre</span>
+                        <span class="ctag">Sin Sprints</span>
+                        <span class="ctag">Adaptable</span>
+                    </div>
+                </div>
+                <div class="conclusion-card featured animate-on-scroll slide-right">
+                    <div class="featured-badge">Mejor Balance</div>
+                    <div class="conclusion-icon" style="color: var(--scrumban)">
+                        <svg viewBox="0 0 40 40" fill="none"><circle cx="20" cy="20" r="18" stroke="currentColor" stroke-width="2"/><line x1="20" y1="2" x2="20" y2="38" stroke="currentColor" stroke-width="1.5" stroke-dasharray="3 2"/></svg>
+                    </div>
+                    <h4>Scrumban</h4>
+                    <p>Ideal si se busca <strong>equilibrio</strong> entre control operativo y agilidad de entrega</p>
+                    <div class="conclusion-tags">
+                        <span class="ctag">Híbrido</span>
+                        <span class="ctag">Equilibrado</span>
+                        <span class="ctag">Escalable</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Final Comparison -->
+            <div class="final-comparison animate-on-scroll">
+                <div class="comparison-row header-row">
+                    <div class="comparison-cell">Criterio</div>
+                    <div class="comparison-cell">Scrum</div>
+                    <div class="comparison-cell">Kanban</div>
+                    <div class="comparison-cell highlight-cell">Scrumban</div>
+                </div>
+                <div class="comparison-row">
+                    <div class="comparison-cell label-cell">Control</div>
+                    <div class="comparison-cell"><div class="stars">★★★★★</div></div>
+                    <div class="comparison-cell"><div class="stars">★★★☆☆</div></div>
+                    <div class="comparison-cell highlight-cell"><div class="stars">★★★★☆</div></div>
+                </div>
+                <div class="comparison-row">
+                    <div class="comparison-cell label-cell">Flexibilidad</div>
+                    <div class="comparison-cell"><div class="stars">★★★☆☆</div></div>
+                    <div class="comparison-cell"><div class="stars">★★★★★</div></div>
+                    <div class="comparison-cell highlight-cell"><div class="stars">★★★★☆</div></div>
+                </div>
+                <div class="comparison-row">
+                    <div class="comparison-cell label-cell">Predictibilidad</div>
+                    <div class="comparison-cell"><div class="stars">★★★★★</div></div>
+                    <div class="comparison-cell"><div class="stars">★★☆☆☆</div></div>
+                    <div class="comparison-cell highlight-cell"><div class="stars">★★★★☆</div></div>
+                </div>
+                <div class="comparison-row">
+                    <div class="comparison-cell label-cell">Adaptabilidad</div>
+                    <div class="comparison-cell"><div class="stars">★★☆☆☆</div></div>
+                    <div class="comparison-cell"><div class="stars">★★★★★</div></div>
+                    <div class="comparison-cell highlight-cell"><div class="stars">★★★★★</div></div>
+                </div>
+                <div class="comparison-row">
+                    <div class="comparison-cell label-cell">Complejidad</div>
+                    <div class="comparison-cell"><div class="stars">★★★★☆</div></div>
+                    <div class="comparison-cell"><div class="stars">★★☆☆☆</div></div>
+                    <div class="comparison-cell highlight-cell"><div class="stars">★★★☆☆</div></div>
+                </div>
+            </div>
+
+            <div class="final-cta animate-on-scroll">
+                <p>Transportes NOVA</p>
+                <span>Presentación Ejecutiva — Análisis de Metodologías Ágiles</span>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <p>Transportes NOVA — Presentación Ejecutiva</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
