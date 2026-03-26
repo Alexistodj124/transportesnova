@@ -1306,6 +1306,185 @@ body {
     font-style: italic;
 }
 
+/* ===== COBRO MENSUAL ===== */
+.mensual-banner {
+    margin-top: 2.5rem;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    display: flex;
+    align-items: stretch;
+    position: relative;
+}
+
+.mensual-banner::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #6366f1, #8b5cf6, #06b6d4);
+}
+
+.mensual-left {
+    display: flex;
+    gap: 1.5rem;
+    padding: 2rem 2rem 2rem 2.5rem;
+    flex: 1;
+    align-items: flex-start;
+}
+
+.mensual-icon {
+    font-size: 2.5rem;
+    line-height: 1;
+    padding-top: .2rem;
+    flex-shrink: 0;
+}
+
+.mensual-info { flex: 1; }
+
+.mensual-label {
+    font-size: .7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--accent);
+    display: block;
+    margin-bottom: .5rem;
+}
+
+.mensual-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: .7rem;
+    letter-spacing: -.5px;
+}
+
+.mensual-desc {
+    font-size: .88rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+    margin-bottom: 1.2rem;
+    max-width: 550px;
+}
+
+.mensual-desc strong {
+    color: #f87171;
+    font-weight: 600;
+}
+
+.mensual-includes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .5rem;
+}
+
+.mensual-chip {
+    padding: .3rem .85rem;
+    border-radius: 50px;
+    font-size: .75rem;
+    font-weight: 600;
+    border: 1px solid;
+}
+
+.chip-yes {
+    background: rgba(34, 197, 94, .08);
+    border-color: rgba(34, 197, 94, .25);
+    color: #4ade80;
+}
+
+.chip-no {
+    background: rgba(239, 68, 68, .07);
+    border-color: rgba(239, 68, 68, .2);
+    color: #f87171;
+}
+
+.mensual-right {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: .8rem;
+    padding: 2rem 2.5rem;
+    background: rgba(99, 102, 241, .06);
+    border-left: 1px solid var(--border);
+    min-width: 210px;
+    text-align: center;
+}
+
+.mensual-price-box {
+    display: flex;
+    align-items: baseline;
+    gap: .2rem;
+    line-height: 1;
+}
+
+.mensual-currency {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--accent);
+}
+
+.mensual-amount {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 3rem;
+    font-weight: 800;
+    background: var(--gradient-text);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    letter-spacing: -1px;
+}
+
+.mensual-period {
+    font-size: 1rem;
+    color: var(--text-muted);
+    font-weight: 500;
+}
+
+.mensual-anual {
+    display: flex;
+    flex-direction: column;
+    gap: .15rem;
+    padding: .5rem 1rem;
+    background: rgba(255, 255, 255, .03);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    font-size: .75rem;
+}
+
+.mensual-anual span { color: var(--text-muted); }
+.mensual-anual strong { color: var(--text); font-size: .85rem; }
+
+.mensual-badge {
+    display: inline-block;
+    padding: .3rem 1rem;
+    background: rgba(99, 102, 241, .15);
+    border: 1px solid rgba(99, 102, 241, .3);
+    border-radius: 50px;
+    font-size: .7rem;
+    font-weight: 700;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+@media (max-width: 768px) {
+    .mensual-banner { flex-direction: column; }
+    .mensual-right {
+        border-left: none;
+        border-top: 1px solid var(--border);
+        min-width: unset;
+        padding: 1.5rem 2rem;
+    }
+    .mensual-left { padding: 1.5rem; }
+    .mensual-amount { font-size: 2.4rem; }
+}
+
 @media (max-width: 600px) {
     .costos-table-row {
         grid-template-columns: 1fr 1fr 1fr 1fr;
