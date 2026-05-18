@@ -1,6 +1,7 @@
+const VIEWS = ['resumen', 'scrum', 'kanban', 'scrumban', 'xp', 'wsf', 'pmi'];
+
 document.addEventListener('DOMContentLoaded', () => {
 
-    // Scroll Progress Bar
     const scrollProgress = document.getElementById('scrollProgress');
     const navbar = document.getElementById('navbar');
 
@@ -9,12 +10,9 @@ document.addEventListener('DOMContentLoaded', () => {
         const docHeight = document.documentElement.scrollHeight - window.innerHeight;
         const scrollPercent = (scrollTop / docHeight) * 100;
         scrollProgress.style.width = scrollPercent + '%';
-
-        // Navbar background
         navbar.classList.toggle('scrolled', scrollTop > 80);
     });
 
-    // Mobile Menu Toggle
     const navToggle = document.getElementById('navToggle');
     const mobileMenu = document.getElementById('mobileMenu');
 
@@ -30,23 +28,9 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Smooth Scrolling
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', e => {
-            e.preventDefault();
-            const target = document.querySelector(anchor.getAttribute('href'));
-            if (target) {
-                const offset = 80;
-                const top = target.getBoundingClientRect().top + window.scrollY - offset;
-                window.scrollTo({ top, behavior: 'smooth' });
-            }
-        });
-    });
-
-    // Intersection Observer for animations
     const observerOptions = {
-        threshold: 0.15,
-        rootMargin: '0px 0px -50px 0px'
+        threshold: 0.12,
+        rootMargin: '0px 0px -40px 0px'
     };
 
     const observer = new IntersectionObserver((entries) => {
@@ -54,17 +38,14 @@ document.addEventListener('DOMContentLoaded', () => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('visible');
 
-                // Animate bars
-                entry.target.querySelectorAll('.bar-fill, .epica-fill, .costo-bar-fill').forEach(bar => {
+                entry.target.querySelectorAll('.bar-fill, .epica-fill, .costo-bar-fill, .hbar-fill').forEach(bar => {
                     const width = bar.dataset.width;
-                    if (width) {
-                        setTimeout(() => {
-                            bar.style.width = width + '%';
-                        }, 300);
+                    if (width && !bar.dataset.animated) {
+                        bar.dataset.animated = 'true';
+                        setTimeout(() => { bar.style.width = width + '%'; }, 250);
                     }
                 });
 
-                // Animate counters
                 entry.target.querySelectorAll('.counter').forEach(counter => {
                     if (counter.dataset.animated) return;
                     counter.dataset.animated = 'true';
@@ -74,48 +55,89 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }, observerOptions);
 
-    document.querySelectorAll('.animate-on-scroll').forEach(el => {
-        observer.observe(el);
-    });
+    function observeAll() {
+        document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
+    }
 
-    // Counter animation
+    observeAll();
+
     function animateCounter(el) {
-        const target = parseInt(el.dataset.target);
-        const duration = 2000;
+        const targetStr = el.dataset.target;
+        const target = parseFloat(targetStr);
+        const decimals = (targetStr.split('.')[1] || '').length;
+        const duration = 1800;
         const start = performance.now();
 
         function update(now) {
             const elapsed = now - start;
             const progress = Math.min(elapsed / duration, 1);
             const eased = 1 - Math.pow(1 - progress, 3);
-            el.textContent = Math.round(target * eased);
+            const value = target * eased;
+            el.textContent = decimals > 0 ? value.toFixed(decimals) : Math.round(value).toLocaleString('es-GT');
             if (progress < 1) requestAnimationFrame(update);
         }
 
         requestAnimationFrame(update);
     }
 
-    // Parallax on hero shapes
     window.addEventListener('scroll', () => {
         const scrollY = window.scrollY;
-        const shapes = document.querySelectorAll('.shape');
-        shapes.forEach((shape, i) => {
+        document.querySelectorAll('.view.active .shape').forEach((shape, i) => {
             const speed = (i + 1) * 0.03;
             shape.style.transform = `translateY(${scrollY * speed}px)`;
         });
     });
 
-    // Active nav link
-    const sections = document.querySelectorAll('section[id]');
-    window.addEventListener('scroll', () => {
-        const scrollY = window.scrollY + 150;
-        sections.forEach(section => {
-            const top = section.offsetTop;
-            const height = section.offsetHeight;
-            const id = section.getAttribute('id');
-            const link = document.querySelector(`.nav-links a[href="#${id}"]`);
-            if (link) {
-                link.classList.toggle('active', scrollY >= top && scrollY < top + height);
+    function resetAnimationsInView(viewEl) {
+        viewEl.querySelectorAll('.animate-on-scroll').forEach(el => {
+            el.classList.remove('visible');
+        });
+        viewEl.querySelectorAll('.counter').forEach(c => {
+            delete c.dataset.animated;
+            c.textContent = '0';
+        });
+        viewEl.querySelectorAll('.bar-fill, .epica-fill, .costo-bar-fill, .hbar-fill').forEach(b => {
+            delete b.dataset.animated;
+            b.style.width = '0%';
+        });
+    }
+
+    function showView(name) {
+        const target = VIEWS.includes(name) ? name : 'resumen';
+        document.querySelectorAll('.view').forEach(v => {
+            const isActive = v.dataset.view === target;
+            v.classList.toggle('active', isActive);
+            if (isActive) {
+                resetAnimationsInView(v);
+            }
+        });
+        document.querySelectorAll('.nav-links a[data-view], .mobile-menu a[data-view]').forEach(a => {
+            a.classList.toggle('active', a.dataset.view === target);
+        });
+        document.body.setAttribute('data-current-view', target);
+        window.scrollTo({ top: 0, behavior: 'instant' });
+
+        requestAnimationFrame(() => {
+            const activeView = document.querySelector('.view.active');
+            if (activeView) {
+                activeView.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
+            }
+        });
+    }
+
+    window.addEventListener('hashchange', () => showView(location.hash.slice(1)));
+    showView(location.hash.slice(1) || 'resumen');
+
+    document.querySelectorAll('a[data-view]').forEach(a => {
+        a.addEventListener('click', (e) => {
+            const v = a.dataset.view;
+            if (VIEWS.includes(v)) {
+                e.preventDefault();
+                if (location.hash !== `#${v}`) {
+                    location.hash = v;
+                } else {
+                    showView(v);
+                }
             }
         });
     });
