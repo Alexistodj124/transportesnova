@@ -47,7 +47,15 @@
         <a href="#scrumban" data-view="scrumban">Scrumban</a>
         <a href="#xp"       data-view="xp">XP</a>
         <a href="#wsf"      data-view="wsf">Water-Scrum-Fall</a>
-        <a href="#pmi"      data-view="pmi">PMI</a>
+        <a href="#pmi"      data-view="pmi" class="investor-only">PMI</a>
+        <div class="mobile-mode-switcher">
+            <button class="mode-btn active" data-mode="cliente" type="button">
+                <span class="mode-icon">👤</span><span class="mode-label">Cliente</span>
+            </button>
+            <button class="mode-btn" data-mode="inversor" type="button">
+                <span class="mode-icon">💼</span><span class="mode-label">Inversor</span>
+            </button>
+        </div>
         <a href="sistema.html" class="nav-cta-link">Sistema Demo →</a>
         <button class="theme-toggle" id="themeToggleMobile" aria-label="Cambiar tema">
             <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
