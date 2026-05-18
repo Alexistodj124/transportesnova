@@ -142,4 +142,47 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    // Audience mode toggle (Cliente / Inversor) — defaults to "cliente"
+    function setMode(mode) {
+        const m = (mode === 'inversor') ? 'inversor' : 'cliente';
+        document.body.setAttribute('data-mode', m);
+        document.querySelectorAll('.mode-btn').forEach(b => {
+            b.classList.toggle('active', b.dataset.mode === m);
+        });
+        const indicator = document.getElementById('modeIndicator');
+        if (indicator) {
+            indicator.querySelector('strong').textContent = m === 'inversor' ? 'Inversor' : 'Cliente';
+        }
+    }
+
+    document.querySelectorAll('.mode-btn').forEach(btn => {
+        btn.addEventListener('click', () => setMode(btn.dataset.mode));
+    });
+
+    setMode('cliente');
+
+    // Theme toggle (light / dark) — persisted in localStorage, shared with sistema.html
+    function applyTheme(t) {
+        const theme = t === 'light' ? 'light' : 'dark';
+        if (theme === 'light') {
+            document.body.setAttribute('data-theme', 'light');
+        } else {
+            document.body.removeAttribute('data-theme');
+        }
+        try { localStorage.setItem('theme', theme); } catch (e) {}
+    }
+
+    const savedTheme = (function () {
+        try { return localStorage.getItem('theme'); } catch (e) { return null; }
+    })();
+    const prefersLight = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches;
+    applyTheme(savedTheme || (prefersLight ? 'light' : 'dark'));
+
+    document.querySelectorAll('#themeToggle, #themeToggleMobile').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const current = document.body.getAttribute('data-theme') === 'light' ? 'light' : 'dark';
+            applyTheme(current === 'light' ? 'dark' : 'light');
+        });
+    });
+
 });

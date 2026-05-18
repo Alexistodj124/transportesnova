@@ -1,0 +1,1064 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema NOVA · Gestión de Flota y Logística</title>
+    <link rel="stylesheet" href="sistema.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div class="app">
+
+    <!-- ============================================================
+         TOPBAR
+         ============================================================ -->
+    <header class="topbar">
+        <a href="#dashboard" class="topbar-logo" data-page="dashboard">
+            <span class="dot">N</span>
+            <span>NOVA <span class="light">Sistema</span></span>
+        </a>
+        <div class="topbar-search">
+            <input type="text" placeholder="Buscar unidad, piloto, encomienda, ruta…" id="globalSearch">
+        </div>
+        <div class="topbar-right">
+            <button class="theme-toggle" id="themeToggle" aria-label="Cambiar tema" title="Cambiar tema claro / oscuro">
+                <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+                <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+            </button>
+            <button class="topbar-btn" data-action="toggle-alerts" title="Alertas">
+                <span>🔔</span>
+                <span class="badge-dot"></span>
+            </button>
+            <button class="topbar-btn" title="Configuración">⚙</button>
+            <div class="topbar-user">
+                <div class="topbar-avatar">AM</div>
+                <div class="topbar-user-info">
+                    <div class="topbar-user-name">Andrea Morales</div>
+                    <div class="topbar-user-role">Gerente Operaciones</div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- ============================================================
+         SIDEBAR
+         ============================================================ -->
+    <aside class="sidebar">
+        <div class="sidebar-group">
+            <a class="sidebar-link active" data-page="dashboard">
+                <span class="sidebar-icon">▦</span>
+                Dashboard
+            </a>
+        </div>
+
+        <div class="sidebar-group">
+            <div class="sidebar-group-title">Operación</div>
+            <a class="sidebar-link" data-page="flota">
+                <span class="sidebar-icon">⊟</span>
+                Flota y Unidades
+                <span class="badge">24</span>
+            </a>
+            <a class="sidebar-link" data-page="pilotos">
+                <span class="sidebar-icon">⊙</span>
+                Pilotos
+                <span class="badge">18</span>
+            </a>
+            <a class="sidebar-link" data-page="rutas">
+                <span class="sidebar-icon">↗</span>
+                Rutas y Planificación
+                <span class="badge">12</span>
+            </a>
+            <a class="sidebar-link" data-page="monitoreo">
+                <span class="sidebar-icon">◉</span>
+                Monitoreo en Tiempo Real
+                <span class="badge crit">3</span>
+            </a>
+            <a class="sidebar-link" data-page="encomiendas">
+                <span class="sidebar-icon">▤</span>
+                Encomiendas
+                <span class="badge">47</span>
+            </a>
+        </div>
+
+        <div class="sidebar-group">
+            <div class="sidebar-group-title">Gestión</div>
+            <a class="sidebar-link" data-page="incidencias">
+                <span class="sidebar-icon">⚠</span>
+                Incidencias
+                <span class="badge warn">5</span>
+            </a>
+            <a class="sidebar-link" data-page="mantenimiento">
+                <span class="sidebar-icon">⚒</span>
+                Mantenimiento
+            </a>
+            <a class="sidebar-link" data-page="alertas">
+                <span class="sidebar-icon">🔔</span>
+                Alertas
+                <span class="badge crit">7</span>
+            </a>
+            <a class="sidebar-link" data-page="reportes">
+                <span class="sidebar-icon">▥</span>
+                Reportes
+            </a>
+        </div>
+
+        <div class="sidebar-group">
+            <div class="sidebar-group-title">Administración</div>
+            <a class="sidebar-link" data-page="usuarios">
+                <span class="sidebar-icon">⚇</span>
+                Usuarios y Roles
+            </a>
+        </div>
+
+        <a href="index.html" class="sidebar-back">
+            ← Volver a Presentación
+        </a>
+    </aside>
+
+    <!-- ============================================================
+         MAIN
+         ============================================================ -->
+    <main class="main">
+
+        <div class="demo-banner">
+            <span class="demo-banner-dot"></span>
+            <strong style="color:#fbbf24;font-weight:700">MOCKUP DEMO</strong>
+            <span style="color:var(--text-muted)">— Interfaz visual del sistema. Los datos son ejemplo; ninguna acción se guarda.</span>
+        </div>
+
+        <!-- ============================================================
+             PAGE: DASHBOARD (EP09 Reporting Ejecutivo)
+             ============================================================ -->
+        <section class="page active" data-page="dashboard">
+            <div class="page-header">
+                <div>
+                    <div class="page-breadcrumb">Inicio <span class="sep">/</span> Dashboard Ejecutivo</div>
+                    <h1 class="page-title">Dashboard</h1>
+                    <p class="page-subtitle">Resumen operativo de TransportesNova · Hoy</p>
+                </div>
+                <div class="page-actions">
+                    <button class="btn btn-ghost btn-sm" data-action="filter-period">📅 Hoy</button>
+                    <button class="btn btn-primary btn-sm" data-action="export" data-target="dashboard">⤓ Exportar</button>
+                </div>
+            </div>
+
+            <div class="stat-row">
+                <div class="stat-card" data-action="goto" data-target="flota">
+                    <div class="stat-card-top">
+                        <div class="stat-icon primary">⊟</div>
+                        <span class="stat-trend up">+2</span>
+                    </div>
+                    <div class="stat-value">24</div>
+                    <div class="stat-label">Unidades activas</div>
+                </div>
+                <div class="stat-card" data-action="goto" data-target="rutas">
+                    <div class="stat-card-top">
+                        <div class="stat-icon blue">↗</div>
+                        <span class="stat-trend up">+3</span>
+                    </div>
+                    <div class="stat-value">12</div>
+                    <div class="stat-label">Rutas programadas hoy</div>
+                </div>
+                <div class="stat-card" data-action="goto" data-target="incidencias">
+                    <div class="stat-card-top">
+                        <div class="stat-icon yellow">⚠</div>
+                        <span class="stat-trend down">−2</span>
+                    </div>
+                    <div class="stat-value">5</div>
+                    <div class="stat-label">Incidencias abiertas</div>
+                </div>
+                <div class="stat-card" data-action="goto" data-target="encomiendas">
+                    <div class="stat-card-top">
+                        <div class="stat-icon green">▤</div>
+                        <span class="stat-trend up">+8</span>
+                    </div>
+                    <div class="stat-value">47</div>
+                    <div class="stat-label">Encomiendas en proceso</div>
+                </div>
+            </div>
+
+            <div class="dash-grid">
+                <div class="panel">
+                    <div class="panel-head">
+                        <div>
+                            <div class="panel-title">Entregas y rutas — Últimos 12 días</div>
+                            <div class="panel-sub">Comparativa entregas (azul) vs rutas programadas (verde)</div>
+                        </div>
+                        <div class="panel-actions">
+                            <button class="btn btn-ghost btn-sm">Semana</button>
+                            <button class="btn btn-ghost btn-sm">Mes</button>
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <div class="chart-bars">
+                            <div class="chart-bar" style="height:45%"><span class="chart-bar-tip">38</span></div>
+                            <div class="chart-bar" style="height:55%"><span class="chart-bar-tip">42</span></div>
+                            <div class="chart-bar" style="height:48%"><span class="chart-bar-tip">39</span></div>
+                            <div class="chart-bar" style="height:62%"><span class="chart-bar-tip">47</span></div>
+                            <div class="chart-bar" style="height:70%"><span class="chart-bar-tip">53</span></div>
+                            <div class="chart-bar" style="height:58%"><span class="chart-bar-tip">44</span></div>
+                            <div class="chart-bar" style="height:75%"><span class="chart-bar-tip">58</span></div>
+                            <div class="chart-bar" style="height:80%"><span class="chart-bar-tip">62</span></div>
+                            <div class="chart-bar" style="height:68%"><span class="chart-bar-tip">51</span></div>
+                            <div class="chart-bar" style="height:85%"><span class="chart-bar-tip">68</span></div>
+                            <div class="chart-bar" style="height:90%"><span class="chart-bar-tip">71</span></div>
+                            <div class="chart-bar" style="height:95%"><span class="chart-bar-tip">74</span></div>
+                        </div>
+                        <div class="chart-labels">
+                            <div class="chart-label">07</div><div class="chart-label">08</div><div class="chart-label">09</div>
+                            <div class="chart-label">10</div><div class="chart-label">11</div><div class="chart-label">12</div>
+                            <div class="chart-label">13</div><div class="chart-label">14</div><div class="chart-label">15</div>
+                            <div class="chart-label">16</div><div class="chart-label">17</div><div class="chart-label">18</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="panel">
+                    <div class="panel-head">
+                        <div class="panel-title">Estado de la flota</div>
+                    </div>
+                    <div class="panel-body">
+                        <div class="donut">
+                            <svg width="160" height="160" viewBox="0 0 160 160">
+                                <circle cx="80" cy="80" r="62" stroke="rgba(255,255,255,.05)" stroke-width="20" fill="none"/>
+                                <circle cx="80" cy="80" r="62" stroke="#10b981" stroke-width="20" fill="none" stroke-dasharray="292 100" stroke-dashoffset="0"/>
+                                <circle cx="80" cy="80" r="62" stroke="#f59e0b" stroke-width="20" fill="none" stroke-dasharray="49 343" stroke-dashoffset="-292"/>
+                                <circle cx="80" cy="80" r="62" stroke="#ef4444" stroke-width="20" fill="none" stroke-dasharray="24 368" stroke-dashoffset="-341"/>
+                                <circle cx="80" cy="80" r="62" stroke="#8888a0" stroke-width="20" fill="none" stroke-dasharray="24 368" stroke-dashoffset="-365"/>
+                            </svg>
+                            <div class="donut-center">
+                                <div class="donut-value">24</div>
+                                <div class="donut-label">Unidades</div>
+                            </div>
+                        </div>
+                        <div class="donut-legend">
+                            <div class="donut-legend-row"><span class="donut-legend-dot" style="background:#10b981"></span> Activas <span class="val">18</span></div>
+                            <div class="donut-legend-row"><span class="donut-legend-dot" style="background:#f59e0b"></span> Mantenimiento <span class="val">3</span></div>
+                            <div class="donut-legend-row"><span class="donut-legend-dot" style="background:#ef4444"></span> Fuera de servicio <span class="val">2</span></div>
+                            <div class="donut-legend-row"><span class="donut-legend-dot" style="background:#8888a0"></span> Inactivas <span class="val">1</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dash-grid">
+                <div class="panel">
+                    <div class="panel-head">
+                        <div class="panel-title">Rutas activas ahora</div>
+                        <button class="btn btn-ghost btn-sm" data-action="goto" data-target="monitoreo">Ver mapa →</button>
+                    </div>
+                    <div class="panel-body flush">
+                        <table class="tbl">
+                            <thead>
+                                <tr><th>Ruta</th><th>Unidad</th><th>Piloto</th><th>Estado</th><th>ETA</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr data-action="open-route" data-id="R-2401"><td><strong>Guatemala → Antigua</strong></td><td>P-123ABC</td><td>Carlos Méndez</td><td><span class="badge success">En ruta</span></td><td>11:42</td></tr>
+                                <tr data-action="open-route" data-id="R-2402"><td><strong>Guatemala → Quetzaltenango</strong></td><td>P-456DEF</td><td>José Rodríguez</td><td><span class="badge success">En ruta</span></td><td>15:18</td></tr>
+                                <tr data-action="open-route" data-id="R-2403"><td><strong>Guatemala → Cobán</strong></td><td>P-789GHI</td><td>María González</td><td><span class="badge warn">Retraso 12 m</span></td><td>16:55</td></tr>
+                                <tr data-action="open-route" data-id="R-2404"><td><strong>Mixco → Chimaltenango</strong></td><td>C-001XYZ</td><td>Luis Pérez</td><td><span class="badge success">En ruta</span></td><td>10:30</td></tr>
+                                <tr data-action="open-route" data-id="R-2405"><td><strong>Guatemala → Puerto Barrios</strong></td><td>P-234JKL</td><td>Andrés Ramírez</td><td><span class="badge error">Desvío</span></td><td>—</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="panel">
+                    <div class="panel-head">
+                        <div class="panel-title">Alertas recientes</div>
+                        <button class="btn btn-ghost btn-sm" data-action="goto" data-target="alertas">Ver todas →</button>
+                    </div>
+                    <div class="panel-body flush">
+                        <div class="alert-item" data-action="open-alert">
+                            <div class="alert-dot high">⚠</div>
+                            <div class="alert-body"><strong>Unidad P-234JKL fuera de ruta</strong><div class="meta">Desvío detectado hace 12 min en CA-9</div></div>
+                            <div class="alert-time">12 min</div>
+                        </div>
+                        <div class="alert-item" data-action="open-alert">
+                            <div class="alert-dot mid">⏱</div>
+                            <div class="alert-body"><strong>Ruta R-2403 con retraso</strong><div class="meta">Llegada estimada 12 minutos tarde</div></div>
+                            <div class="alert-time">28 min</div>
+                        </div>
+                        <div class="alert-item" data-action="open-alert">
+                            <div class="alert-dot mid">📄</div>
+                            <div class="alert-body"><strong>Licencia de Carlos Méndez vence en 15 días</strong><div class="meta">Tipo A · Vencimiento 02/06/2026</div></div>
+                            <div class="alert-time">1 h</div>
+                        </div>
+                        <div class="alert-item" data-action="open-alert">
+                            <div class="alert-dot low">🛠</div>
+                            <div class="alert-body"><strong>Mantenimiento próximo P-789GHI</strong><div class="meta">Cambio de aceite programado 22/05/2026</div></div>
+                            <div class="alert-time">2 h</div>
+                        </div>
+                        <div class="alert-item" data-action="open-alert">
+                            <div class="alert-dot low">📦</div>
+                            <div class="alert-body"><strong>Encomienda ENC-1042 entregada</strong><div class="meta">Firmada en destino · Cliente: Distribuidora Sol</div></div>
+                            <div class="alert-time">3 h</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================================
+             PAGE: FLOTA (EP02)
+             ============================================================ -->
+        <section class="page" data-page="flota">
+            <div class="page-header">
+                <div>
+                    <div class="page-breadcrumb">Operación <span class="sep">/</span> Flota y Unidades</div>
+                    <h1 class="page-title">Flota y Unidades</h1>
+                    <p class="page-subtitle">Registro, edición y control de las 24 unidades de la flota</p>
+                </div>
+                <div class="page-actions">
+                    <button class="btn btn-ghost btn-sm" data-action="export" data-target="flota">⤓ Exportar</button>
+                    <button class="btn btn-primary btn-sm" data-action="open-modal" data-modal="newUnidad">+ Registrar unidad</button>
+                </div>
+            </div>
+
+            <div class="stat-row">
+                <div class="stat-card"><div class="stat-card-top"><div class="stat-icon primary">⊟</div></div><div class="stat-value">24</div><div class="stat-label">Total de unidades</div></div>
+                <div class="stat-card"><div class="stat-card-top"><div class="stat-icon green">✓</div></div><div class="stat-value">18</div><div class="stat-label">Activas</div></div>
+                <div class="stat-card"><div class="stat-card-top"><div class="stat-icon yellow">⚒</div></div><div class="stat-value">3</div><div class="stat-label">En mantenimiento</div></div>
+                <div class="stat-card"><div class="stat-card-top"><div class="stat-icon red">✕</div></div><div class="stat-value">2</div><div class="stat-label">Fuera de servicio</div></div>
+            </div>
+
+            <div class="panel">
+                <div class="panel-head">
+                    <div class="panel-title">Listado de unidades</div>
+                    <div class="panel-actions">
+                        <input type="text" class="filter-input" placeholder="Buscar placa o tipo…" data-filter="flotaTable">
+                        <select class="filter-select" data-filter-select="flotaTable">
+                            <option value="">Todos los estados</option>
+                            <option>Activa</option>
+                            <option>En ruta</option>
+                            <option>Mantenimiento</option>
+                            <option>Fuera de servicio</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="panel-body flush">
+                    <table class="tbl" id="flotaTable">
+                        <thead>
+                            <tr>
+                                <th>Placa</th><th>Tipo</th><th>Capacidad</th><th>Estado</th><th>Último mant.</th><th>Doc. vence</th><th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr data-action="open-modal" data-modal="unidadDetail" data-name="P-123ABC"><td><strong>P-123ABC</strong></td><td>Camión 3.5T</td><td>3,500 kg</td><td><span class="badge success">En ruta</span></td><td>14/04/2026</td><td>22/11/2026</td><td class="tbl-actions"><button class="tbl-action">⋮</button></td></tr>
+                            <tr data-action="open-modal" data-modal="unidadDetail" data-name="P-456DEF"><td><strong>P-456DEF</strong></td><td>Furgón</td><td>2,000 kg</td><td><span class="badge success">En ruta</span></td><td>02/05/2026</td><td>18/09/2026</td><td class="tbl-actions"><button class="tbl-action">⋮</button></td></tr>
+                            <tr data-action="open-modal" data-modal="unidadDetail" data-name="P-789GHI"><td><strong>P-789GHI</strong></td><td>Camión 5T</td><td>5,000 kg</td><td><span class="badge warn">Mantenimiento</span></td><td>22/05/2026</td><td>05/01/2027</td><td class="tbl-actions"><button class="tbl-action">⋮</button></td></tr>
+                            <tr data-action="open-modal" data-modal="unidadDetail" data-name="C-001XYZ"><td><strong>C-001XYZ</strong></td><td>Pick-up</td><td>1,000 kg</td><td><span class="badge success">En ruta</span></td><td>11/04/2026</td><td>30/08/2026</td><td class="tbl-actions"><button class="tbl-action">⋮</button></td></tr>
+                            <tr data-action="open-modal" data-modal="unidadDetail" data-name="P-234JKL"><td><strong>P-234JKL</strong></td><td>Camión 3.5T</td><td>3,500 kg</td><td><span class="badge error">Desvío</span></td><td>28/03/2026</td><td>14/07/2026</td><td class="tbl-actions"><button class="tbl-action">⋮</button></td></tr>
+                            <tr data-action="open-modal" data-modal="unidadDetail" data-name="P-567MNO"><td><strong>P-567MNO</strong></td><td>Furgón</td><td>2,000 kg</td><td><span class="badge success">Disponible</span></td><td>06/05/2026</td><td>20/10/2026</td><td class="tbl-actions"><button class="tbl-action">⋮</button></td></tr>
+                            <tr data-action="open-modal" data-modal="unidadDetail" data-name="P-890PQR"><td><strong>P-890PQR</strong></td><td>Camión 8T</td><td>8,000 kg</td><td><span class="badge success">Disponible</span></td><td>19/04/2026</td><td>11/12/2026</td><td class="tbl-actions"><button class="tbl-action">⋮</button></td></tr>
+                            <tr data-action="open-modal" data-modal="unidadDetail" data-name="C-345STU"><td><strong>C-345STU</strong></td><td>Pick-up</td><td>1,000 kg</td><td><span class="badge muted">Inactiva</span></td><td>15/02/2026</td><td>06/04/2026</td><td class="tbl-actions"><button class="tbl-action">⋮</button></td></tr>
+                            <tr data-action="open-modal" data-modal="unidadDetail" data-name="P-678VWX"><td><strong>P-678VWX</strong></td><td>Camión 5T</td><td>5,000 kg</td><td><span class="badge success">Disponible</span></td><td>30/04/2026</td><td>02/02/2027</td><td class="tbl-actions"><button class="tbl-action">⋮</button></td></tr>
+                            <tr data-action="open-modal" data-modal="unidadDetail" data-name="P-012YZA"><td><strong>P-012YZA</strong></td><td>Furgón</td><td>2,000 kg</td><td><span class="badge warn">Mantenimiento</span></td><td>21/05/2026</td><td>15/06/2026</td><td class="tbl-actions"><button class="tbl-action">⋮</button></td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================================
+             PAGE: PILOTOS (EP03)
+             ============================================================ -->
+        <section class="page" data-page="pilotos">
+            <div class="page-header">
+                <div>
+                    <div class="page-breadcrumb">Operación <span class="sep">/</span> Pilotos</div>
+                    <h1 class="page-title">Pilotos</h1>
+                    <p class="page-subtitle">Disponibilidad, licencias y desempeño del equipo de conductores</p>
+                </div>
+                <div class="page-actions">
+                    <button class="btn btn-primary btn-sm" data-action="open-modal" data-modal="newPiloto">+ Registrar piloto</button>
+                </div>
+            </div>
+
+            <div class="stat-row">
+                <div class="stat-card"><div class="stat-card-top"><div class="stat-icon primary">⊙</div></div><div class="stat-value">18</div><div class="stat-label">Total de pilotos</div></div>
+                <div class="stat-card"><div class="stat-card-top"><div class="stat-icon green">✓</div></div><div class="stat-value">12</div><div class="stat-label">Disponibles</div></div>
+                <div class="stat-card"><div class="stat-card-top"><div class="stat-icon blue">↗</div></div><div class="stat-value">4</div><div class="stat-label">En ruta</div></div>
+                <div class="stat-card"><div class="stat-card-top"><div class="stat-icon yellow">📄</div></div><div class="stat-value">3</div><div class="stat-label">Licencia por vencer</div></div>
+            </div>
+
+            <div class="filters">
+                <span class="filter-chip active">Todos <span class="count">18</span></span>
+                <span class="filter-chip">Disponibles <span class="count">12</span></span>
+                <span class="filter-chip">En ruta <span class="count">4</span></span>
+                <span class="filter-chip">Inactivos <span class="count">2</span></span>
+                <span class="filter-chip">Licencia por vencer <span class="count">3</span></span>
+                <input type="text" class="filter-input" placeholder="Buscar nombre…" style="margin-left:auto">
+            </div>
+
+            <div class="card-grid">
+                <div class="item-card" data-action="open-modal" data-modal="pilotoDetail" data-name="Carlos Méndez">
+                    <div class="item-card-head">
+                        <div style="display:flex;align-items:center;gap:.7rem">
+                            <div class="avatar">CM</div>
+                            <div class="item-card-title">Carlos Méndez</div>
+                        </div>
+                        <span class="badge success">En ruta</span>
+                    </div>
+                    <div class="item-card-meta">Lic. tipo A · 8 años exp.</div>
+                    <div class="item-card-stats">
+                        <div class="item-card-stat">Lic. vence<strong>02/06/2026</strong></div>
+                        <div class="item-card-stat">Rutas mes<strong>23</strong></div>
+                    </div>
+                </div>
+                <div class="item-card" data-action="open-modal" data-modal="pilotoDetail" data-name="José Rodríguez">
+                    <div class="item-card-head">
+                        <div style="display:flex;align-items:center;gap:.7rem">
+                            <div class="avatar" style="background:linear-gradient(135deg,#06b6d4,#10b981)">JR</div>
+                            <div class="item-card-title">José Rodríguez</div>
+                        </div>
+                        <span class="badge success">En ruta</span>
+                    </div>
+                    <div class="item-card-meta">Lic. tipo B · 12 años exp.</div>
+                    <div class="item-card-stats">
+                        <div class="item-card-stat">Lic. vence<strong>18/11/2026</strong></div>
+                        <div class="item-card-stat">Rutas mes<strong>26</strong></div>
+                    </div>
+                </div>
+                <div class="item-card" data-action="open-modal" data-modal="pilotoDetail" data-name="María González">
+                    <div class="item-card-head">
+                        <div style="display:flex;align-items:center;gap:.7rem">
+                            <div class="avatar" style="background:linear-gradient(135deg,#ec4899,#8b5cf6)">MG</div>
+                            <div class="item-card-title">María González</div>
+                        </div>
+                        <span class="badge warn">Retraso</span>
+                    </div>
+                    <div class="item-card-meta">Lic. tipo A · 5 años exp.</div>
+                    <div class="item-card-stats">
+                        <div class="item-card-stat">Lic. vence<strong>22/01/2027</strong></div>
+                        <div class="item-card-stat">Rutas mes<strong>19</strong></div>
+                    </div>
+                </div>
+                <div class="item-card" data-action="open-modal" data-modal="pilotoDetail" data-name="Luis Pérez">
+                    <div class="item-card-head">
+                        <div style="display:flex;align-items:center;gap:.7rem">
+                            <div class="avatar" style="background:linear-gradient(135deg,#f59e0b,#ef4444)">LP</div>
+                            <div class="item-card-title">Luis Pérez</div>
+                        </div>
+                        <span class="badge success">En ruta</span>
+                    </div>
+                    <div class="item-card-meta">Lic. tipo C · 15 años exp.</div>
+                    <div class="item-card-stats">
+                        <div class="item-card-stat">Lic. vence<strong>30/07/2026</strong></div>
+                        <div class="item-card-stat">Rutas mes<strong>28</strong></div>
+                    </div>
+                </div>
+                <div class="item-card" data-action="open-modal" data-modal="pilotoDetail" data-name="Andrés Ramírez">
+                    <div class="item-card-head">
+                        <div style="display:flex;align-items:center;gap:.7rem">
+                            <div class="avatar" style="background:linear-gradient(135deg,#10b981,#06b6d4)">AR</div>
+                            <div class="item-card-title">Andrés Ramírez</div>
+                        </div>
+                        <span class="badge error">Desvío</span>
+                    </div>
+                    <div class="item-card-meta">Lic. tipo A · 6 años exp.</div>
+                    <div class="item-card-stats">
+                        <div class="item-card-stat">Lic. vence<strong>14/08/2026</strong></div>
+                        <div class="item-card-stat">Rutas mes<strong>17</strong></div>
+                    </div>
+                </div>
+                <div class="item-card" data-action="open-modal" data-modal="pilotoDetail" data-name="Sofía López">
+                    <div class="item-card-head">
+                        <div style="display:flex;align-items:center;gap:.7rem">
+                            <div class="avatar" style="background:linear-gradient(135deg,#8b5cf6,#6366f1)">SL</div>
+                            <div class="item-card-title">Sofía López</div>
+                        </div>
+                        <span class="badge info">Disponible</span>
+                    </div>
+                    <div class="item-card-meta">Lic. tipo B · 4 años exp.</div>
+                    <div class="item-card-stats">
+                        <div class="item-card-stat">Lic. vence<strong>09/04/2027</strong></div>
+                        <div class="item-card-stat">Rutas mes<strong>21</strong></div>
+                    </div>
+                </div>
+                <div class="item-card" data-action="open-modal" data-modal="pilotoDetail" data-name="Pedro Castillo">
+                    <div class="item-card-head">
+                        <div style="display:flex;align-items:center;gap:.7rem">
+                            <div class="avatar" style="background:linear-gradient(135deg,#06b6d4,#3b82f6)">PC</div>
+                            <div class="item-card-title">Pedro Castillo</div>
+                        </div>
+                        <span class="badge info">Disponible</span>
+                    </div>
+                    <div class="item-card-meta">Lic. tipo A · 7 años exp.</div>
+                    <div class="item-card-stats">
+                        <div class="item-card-stat">Lic. vence<strong>05/05/2026</strong></div>
+                        <div class="item-card-stat">Rutas mes<strong>22</strong></div>
+                    </div>
+                </div>
+                <div class="item-card" data-action="open-modal" data-modal="pilotoDetail" data-name="Diana Morales">
+                    <div class="item-card-head">
+                        <div style="display:flex;align-items:center;gap:.7rem">
+                            <div class="avatar" style="background:linear-gradient(135deg,#ec4899,#f472b6)">DM</div>
+                            <div class="item-card-title">Diana Morales</div>
+                        </div>
+                        <span class="badge info">Disponible</span>
+                    </div>
+                    <div class="item-card-meta">Lic. tipo C · 10 años exp.</div>
+                    <div class="item-card-stats">
+                        <div class="item-card-stat">Lic. vence<strong>12/03/2027</strong></div>
+                        <div class="item-card-stat">Rutas mes<strong>24</strong></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================================
+             PAGE: RUTAS (EP04)
+             ============================================================ -->
+        <section class="page" data-page="rutas">
+            <div class="page-header">
+                <div>
+                    <div class="page-breadcrumb">Operación <span class="sep">/</span> Rutas y Planificación</div>
+                    <h1 class="page-title">Rutas y Planificación Operativa</h1>
+                    <p class="page-subtitle">Programación, asignación y seguimiento de rutas</p>
+                </div>
+                <div class="page-actions">
+                    <button class="btn btn-ghost btn-sm">📅 Calendario</button>
+                    <button class="btn btn-primary btn-sm" data-action="open-modal" data-modal="newRuta">+ Programar ruta</button>
+                </div>
+            </div>
+
+            <div class="stat-row">
+                <div class="stat-card"><div class="stat-card-top"><div class="stat-icon primary">↗</div></div><div class="stat-value">12</div><div class="stat-label">Rutas hoy</div></div>
+                <div class="stat-card"><div class="stat-card-top"><div class="stat-icon green">●</div></div><div class="stat-value">8</div><div class="stat-label">Activas ahora</div></div>
+                <div class="stat-card"><div class="stat-card-top"><div class="stat-icon blue">✓</div></div><div class="stat-value">4</div><div class="stat-label">Finalizadas hoy</div></div>
+                <div class="stat-card"><div class="stat-card-top"><div class="stat-icon orange">⌚</div></div><div class="stat-value">38</div><div class="stat-label">Próximos 7 días</div></div>
+            </div>
+
+            <div class="panel">
+                <div class="panel-head">
+                    <div class="panel-title">Rutas programadas</div>
+                    <div class="panel-actions">
+                        <button class="btn btn-ghost btn-sm">Hoy</button>
+                        <button class="btn btn-ghost btn-sm">Semana</button>
+                        <button class="btn btn-ghost btn-sm">Mes</button>
+                    </div>
+                </div>
+                <div class="panel-body flush">
+                    <table class="tbl">
+                        <thead>
+                            <tr><th>ID</th><th>Origen → Destino</th><th>Distancia</th><th>Unidad</th><th>Piloto</th><th>Salida</th><th>ETA</th><th>Estado</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr data-action="open-modal" data-modal="rutaDetail" data-name="R-2401"><td><strong>R-2401</strong></td><td>Guatemala → Antigua</td><td>44 km</td><td>P-123ABC</td><td>Carlos Méndez</td><td>09:00</td><td>11:42</td><td><span class="badge success">En ruta</span></td></tr>
+                            <tr data-action="open-modal" data-modal="rutaDetail" data-name="R-2402"><td><strong>R-2402</strong></td><td>Guatemala → Quetzaltenango</td><td>200 km</td><td>P-456DEF</td><td>José Rodríguez</td><td>08:00</td><td>15:18</td><td><span class="badge success">En ruta</span></td></tr>
+                            <tr data-action="open-modal" data-modal="rutaDetail" data-name="R-2403"><td><strong>R-2403</strong></td><td>Guatemala → Cobán</td><td>220 km</td><td>P-789GHI</td><td>María González</td><td>09:30</td><td>16:55</td><td><span class="badge warn">Retraso</span></td></tr>
+                            <tr data-action="open-modal" data-modal="rutaDetail" data-name="R-2404"><td><strong>R-2404</strong></td><td>Mixco → Chimaltenango</td><td>52 km</td><td>C-001XYZ</td><td>Luis Pérez</td><td>09:15</td><td>10:30</td><td><span class="badge success">En ruta</span></td></tr>
+                            <tr data-action="open-modal" data-modal="rutaDetail" data-name="R-2405"><td><strong>R-2405</strong></td><td>Guatemala → Puerto Barrios</td><td>310 km</td><td>P-234JKL</td><td>Andrés Ramírez</td><td>06:00</td><td>—</td><td><span class="badge error">Desvío</span></td></tr>
+                            <tr data-action="open-modal" data-modal="rutaDetail" data-name="R-2406"><td><strong>R-2406</strong></td><td>Guatemala → Escuintla</td><td>58 km</td><td>P-678VWX</td><td>Pedro Castillo</td><td>10:00</td><td>11:25</td><td><span class="badge info">Programada</span></td></tr>
+                            <tr data-action="open-modal" data-modal="rutaDetail" data-name="R-2407"><td><strong>R-2407</strong></td><td>Guatemala → Huehuetenango</td><td>270 km</td><td>P-890PQR</td><td>Sofía López</td><td>12:00</td><td>18:30</td><td><span class="badge info">Programada</span></td></tr>
+                            <tr data-action="open-modal" data-modal="rutaDetail" data-name="R-2408"><td><strong>R-2408</strong></td><td>Guatemala → Retalhuleu</td><td>190 km</td><td>P-567MNO</td><td>Diana Morales</td><td>13:30</td><td>19:00</td><td><span class="badge info">Programada</span></td></tr>
+                            <tr data-action="open-modal" data-modal="rutaDetail" data-name="R-2398"><td><strong>R-2398</strong></td><td>Guatemala → Sololá</td><td>140 km</td><td>P-123ABC</td><td>Carlos Méndez</td><td>05:30</td><td>09:00</td><td><span class="badge muted">Finalizada</span></td></tr>
+                            <tr data-action="open-modal" data-modal="rutaDetail" data-name="R-2399"><td><strong>R-2399</strong></td><td>Mixco → Sacatepéquez</td><td>40 km</td><td>C-001XYZ</td><td>Luis Pérez</td><td>06:00</td><td>07:30</td><td><span class="badge muted">Finalizada</span></td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================================
+             PAGE: MONITOREO (EP05)
+             ============================================================ -->
+        <section class="page" data-page="monitoreo">
+            <div class="page-header">
+                <div>
+                    <div class="page-breadcrumb">Operación <span class="sep">/</span> Monitoreo en Tiempo Real</div>
+                    <h1 class="page-title">Monitoreo en Tiempo Real</h1>
+                    <p class="page-subtitle">Ubicación, estado y progreso de unidades en ruta · actualización cada 30 s</p>
+                </div>
+                <div class="page-actions">
+                    <select class="filter-select">
+                        <option>Todas las regiones</option>
+                        <option>Guatemala</option>
+                        <option>Sacatepéquez</option>
+                        <option>Quetzaltenango</option>
+                    </select>
+                    <button class="btn btn-ghost btn-sm">⟳ Actualizar</button>
+                </div>
+            </div>
+
+            <div class="stat-row">
+                <div class="stat-card"><div class="stat-card-top"><div class="stat-icon green">●</div></div><div class="stat-value">8</div><div class="stat-label">En ruta normal</div></div>
+                <div class="stat-card"><div class="stat-card-top"><div class="stat-icon yellow">⏱</div></div><div class="stat-value">2</div><div class="stat-label">Con retraso</div></div>
+                <div class="stat-card"><div class="stat-card-top"><div class="stat-icon red">⚠</div></div><div class="stat-value">1</div><div class="stat-label">Desvío detectado</div></div>
+                <div class="stat-card"><div class="stat-card-top"><div class="stat-icon muted">●</div></div><div class="stat-value">3</div><div class="stat-label">Sin señal &lt; 5 min</div></div>
+            </div>
+
+            <div class="map-layout">
+                <div class="map">
+                    <div class="map-pin" data-status="ok" style="top:28%;left:42%" data-action="map-pin" data-name="P-123ABC">
+                        <div class="map-pin-dot"></div>
+                        <div class="map-pin-label">P-123ABC · Antigua</div>
+                    </div>
+                    <div class="map-pin" data-status="ok" style="top:35%;left:25%" data-action="map-pin" data-name="P-456DEF">
+                        <div class="map-pin-dot"></div>
+                        <div class="map-pin-label">P-456DEF · Xela</div>
+                    </div>
+                    <div class="map-pin" data-status="retraso" style="top:18%;left:55%" data-action="map-pin" data-name="P-789GHI">
+                        <div class="map-pin-dot"></div>
+                        <div class="map-pin-label">P-789GHI · Cobán (retraso)</div>
+                    </div>
+                    <div class="map-pin" data-status="ok" style="top:40%;left:45%" data-action="map-pin" data-name="C-001XYZ">
+                        <div class="map-pin-dot"></div>
+                        <div class="map-pin-label">C-001XYZ · Chimaltenango</div>
+                    </div>
+                    <div class="map-pin" data-status="desvio" style="top:55%;left:72%" data-action="map-pin" data-name="P-234JKL">
+                        <div class="map-pin-dot"></div>
+                        <div class="map-pin-label">P-234JKL · Pto Barrios (desvío)</div>
+                    </div>
+                    <div class="map-pin" data-status="ok" style="top:60%;left:38%" data-action="map-pin" data-name="P-678VWX">
+                        <div class="map-pin-dot"></div>
+                        <div class="map-pin-label">P-678VWX · Escuintla</div>
+                    </div>
+                    <div class="map-pin" data-status="ok" style="top:25%;left:18%" data-action="map-pin" data-name="P-890PQR">
+                        <div class="map-pin-dot"></div>
+                        <div class="map-pin-label">P-890PQR · Huehue</div>
+                    </div>
+                    <div class="map-pin" data-status="retraso" style="top:48%;left:22%" data-action="map-pin" data-name="P-567MNO">
+                        <div class="map-pin-dot"></div>
+                        <div class="map-pin-label">P-567MNO · Retalhuleu</div>
+                    </div>
+                    <div class="map-pin" data-status="taller" style="top:42%;left:48%" data-action="map-pin" data-name="P-012YZA">
+                        <div class="map-pin-dot"></div>
+                        <div class="map-pin-label">P-012YZA · Taller</div>
+                    </div>
+                </div>
+
+                <div class="unit-list">
+                    <div class="unit-list-head">Unidades en operación</div>
+                    <div class="unit-list-item" data-action="map-pin" data-name="P-123ABC"><span class="unit-list-dot" style="background:#10b981"></span><div class="unit-list-info"><strong>P-123ABC</strong><span>Guatemala → Antigua · 14 km/h</span></div></div>
+                    <div class="unit-list-item" data-action="map-pin" data-name="P-456DEF"><span class="unit-list-dot" style="background:#10b981"></span><div class="unit-list-info"><strong>P-456DEF</strong><span>Guatemala → Xela · 72 km/h</span></div></div>
+                    <div class="unit-list-item" data-action="map-pin" data-name="P-789GHI"><span class="unit-list-dot" style="background:#f59e0b"></span><div class="unit-list-info"><strong>P-789GHI</strong><span>Guatemala → Cobán · retraso 12 min</span></div></div>
+                    <div class="unit-list-item" data-action="map-pin" data-name="C-001XYZ"><span class="unit-list-dot" style="background:#10b981"></span><div class="unit-list-info"><strong>C-001XYZ</strong><span>Mixco → Chimaltenango · 58 km/h</span></div></div>
+                    <div class="unit-list-item" data-action="map-pin" data-name="P-234JKL"><span class="unit-list-dot" style="background:#ef4444"></span><div class="unit-list-info"><strong>P-234JKL</strong><span>Desvío detectado · CA-9</span></div></div>
+                    <div class="unit-list-item" data-action="map-pin" data-name="P-678VWX"><span class="unit-list-dot" style="background:#10b981"></span><div class="unit-list-info"><strong>P-678VWX</strong><span>Guatemala → Escuintla · 65 km/h</span></div></div>
+                    <div class="unit-list-item" data-action="map-pin" data-name="P-890PQR"><span class="unit-list-dot" style="background:#10b981"></span><div class="unit-list-info"><strong>P-890PQR</strong><span>Guatemala → Huehue · 80 km/h</span></div></div>
+                    <div class="unit-list-item" data-action="map-pin" data-name="P-567MNO"><span class="unit-list-dot" style="background:#f59e0b"></span><div class="unit-list-info"><strong>P-567MNO</strong><span>Guatemala → Retalhuleu · retraso 8 min</span></div></div>
+                    <div class="unit-list-item" data-action="map-pin" data-name="P-012YZA"><span class="unit-list-dot" style="background:#8888a0"></span><div class="unit-list-info"><strong>P-012YZA</strong><span>En taller · mantenimiento</span></div></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================================
+             PAGE: ENCOMIENDAS (EP10)
+             ============================================================ -->
+        <section class="page" data-page="encomiendas">
+            <div class="page-header">
+                <div>
+                    <div class="page-breadcrumb">Operación <span class="sep">/</span> Encomiendas</div>
+                    <h1 class="page-title">Trazabilidad de Encomiendas</h1>
+                    <p class="page-subtitle">Registro, seguimiento interno y entrega de encomiendas</p>
+                </div>
+                <div class="page-actions">
+                    <button class="btn btn-ghost btn-sm">⤓ Exportar</button>
+                    <button class="btn btn-primary btn-sm" data-action="open-modal" data-modal="newEncomienda">+ Registrar encomienda</button>
+                </div>
+            </div>
+
+            <div class="stat-row">
+                <div class="stat-card"><div class="stat-card-top"><div class="stat-icon primary">▤</div></div><div class="stat-value">47</div><div class="stat-label">Total en proceso</div></div>
+                <div class="stat-card"><div class="stat-card-top"><div class="stat-icon blue">↗</div></div><div class="stat-value">28</div><div class="stat-label">En tránsito</div></div>
+                <div class="stat-card"><div class="stat-card-top"><div class="stat-icon green">✓</div></div><div class="stat-value">142</div><div class="stat-label">Entregadas mes</div></div>
+                <div class="stat-card"><div class="stat-card-top"><div class="stat-icon yellow">⌚</div></div><div class="stat-value">12</div><div class="stat-label">Pendientes pickup</div></div>
+            </div>
+
+            <div class="filters">
+                <span class="filter-chip active">Todas <span class="count">47</span></span>
+                <span class="filter-chip">En tránsito <span class="count">28</span></span>
+                <span class="filter-chip">Pendientes <span class="count">12</span></span>
+                <span class="filter-chip">Con incidencia <span class="count">3</span></span>
+                <span class="filter-chip">Entregadas hoy <span class="count">4</span></span>
+                <input type="text" class="filter-input" placeholder="Buscar código o cliente…" style="margin-left:auto">
+            </div>
+
+            <div class="panel">
+                <div class="panel-body flush">
+                    <table class="tbl">
+                        <thead><tr><th>Código</th><th>Cliente</th><th>Origen → Destino</th><th>Tipo</th><th>Unidad</th><th>Estado</th><th>Última actualización</th></tr></thead>
+                        <tbody>
+                            <tr data-action="open-modal" data-modal="encomiendaDetail" data-name="ENC-1042"><td><strong>ENC-1042</strong></td><td>Distribuidora Sol</td><td>Guatemala → Antigua</td><td>Caja mediana</td><td>P-123ABC</td><td><span class="badge success">Entregada</span></td><td>Hace 8 min</td></tr>
+                            <tr data-action="open-modal" data-modal="encomiendaDetail" data-name="ENC-1043"><td><strong>ENC-1043</strong></td><td>Comercial Maya</td><td>Guatemala → Cobán</td><td>Paleta</td><td>P-789GHI</td><td><span class="badge warn">Retraso</span></td><td>Hace 22 min</td></tr>
+                            <tr data-action="open-modal" data-modal="encomiendaDetail" data-name="ENC-1044"><td><strong>ENC-1044</strong></td><td>Importadora del Sur</td><td>Guatemala → Quetzaltenango</td><td>Paquete grande</td><td>P-456DEF</td><td><span class="badge info">En tránsito</span></td><td>Hace 15 min</td></tr>
+                            <tr data-action="open-modal" data-modal="encomiendaDetail" data-name="ENC-1045"><td><strong>ENC-1045</strong></td><td>Ferretería Central</td><td>Mixco → Chimaltenango</td><td>3 cajas</td><td>C-001XYZ</td><td><span class="badge info">En tránsito</span></td><td>Hace 6 min</td></tr>
+                            <tr data-action="open-modal" data-modal="encomiendaDetail" data-name="ENC-1046"><td><strong>ENC-1046</strong></td><td>Soluciones Tech</td><td>Guatemala → Pto Barrios</td><td>Equipo electrónico</td><td>P-234JKL</td><td><span class="badge error">Con incidencia</span></td><td>Hace 18 min</td></tr>
+                            <tr data-action="open-modal" data-modal="encomiendaDetail" data-name="ENC-1047"><td><strong>ENC-1047</strong></td><td>Supermercados Pacífico</td><td>Guatemala → Escuintla</td><td>Paleta refrigerada</td><td>P-678VWX</td><td><span class="badge info">En tránsito</span></td><td>Hace 4 min</td></tr>
+                            <tr data-action="open-modal" data-modal="encomiendaDetail" data-name="ENC-1048"><td><strong>ENC-1048</strong></td><td>Constructora del Norte</td><td>Guatemala → Huehuetenango</td><td>Material construcción</td><td>P-890PQR</td><td><span class="badge muted">Pendiente</span></td><td>Hace 1 h</td></tr>
+                            <tr data-action="open-modal" data-modal="encomiendaDetail" data-name="ENC-1049"><td><strong>ENC-1049</strong></td><td>Farmacia Salud Total</td><td>Guatemala → Retalhuleu</td><td>Medicamentos</td><td>P-567MNO</td><td><span class="badge muted">Pendiente</span></td><td>Hace 2 h</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================================
+             PAGE: INCIDENCIAS (EP06)
+             ============================================================ -->
+        <section class="page" data-page="incidencias">
+            <div class="page-header">
+                <div>
+                    <div class="page-breadcrumb">Gestión <span class="sep">/</span> Incidencias</div>
+                    <h1 class="page-title">Gestión de Incidencias</h1>
+                    <p class="page-subtitle">Registro, clasificación, seguimiento y cierre de incidencias operativas</p>
+                </div>
+                <div class="page-actions">
+                    <button class="btn btn-primary btn-sm" data-action="open-modal" data-modal="newIncidencia">+ Registrar incidencia</button>
+                </div>
+            </div>
+
+            <div class="stat-row">
+                <div class="stat-card"><div class="stat-card-top"><div class="stat-icon red">⚠</div></div><div class="stat-value">5</div><div class="stat-label">Abiertas</div></div>
+                <div class="stat-card"><div class="stat-card-top"><div class="stat-icon yellow">↻</div></div><div class="stat-value">3</div><div class="stat-label">En revisión</div></div>
+                <div class="stat-card"><div class="stat-card-top"><div class="stat-icon green">✓</div></div><div class="stat-value">42</div><div class="stat-label">Cerradas mes</div></div>
+                <div class="stat-card"><div class="stat-card-top"><div class="stat-icon orange">⏱</div></div><div class="stat-value">2.4 h</div><div class="stat-label">Tiempo medio resolución</div></div>
+            </div>
+
+            <div class="board">
+                <div class="board-col" data-status="nuevo">
+                    <div class="board-col-head"><span class="board-col-name">Nuevo</span><span class="board-col-count">2</span></div>
+                    <div class="board-items">
+                        <div class="board-card prio-alta" data-action="open-modal" data-modal="incidenciaDetail" data-name="INC-301">
+                            <div class="board-card-id">INC-301 · Alta</div>
+                            <div class="board-card-title">Choque leve en CA-1 km 32</div>
+                            <div class="board-card-meta"><span>P-234JKL</span><span>Hace 18 min</span></div>
+                        </div>
+                        <div class="board-card prio-media" data-action="open-modal" data-modal="incidenciaDetail" data-name="INC-302">
+                            <div class="board-card-id">INC-302 · Media</div>
+                            <div class="board-card-title">Avería mecánica reportada</div>
+                            <div class="board-card-meta"><span>P-789GHI</span><span>Hace 32 min</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="board-col" data-status="en-curso">
+                    <div class="board-col-head"><span class="board-col-name">En curso</span><span class="board-col-count">3</span></div>
+                    <div class="board-items">
+                        <div class="board-card prio-alta" data-action="open-modal" data-modal="incidenciaDetail" data-name="INC-298">
+                            <div class="board-card-id">INC-298 · Alta</div>
+                            <div class="board-card-title">Retraso por tráfico — desvío sugerido</div>
+                            <div class="board-card-meta"><span>P-789GHI</span><span>1 h</span></div>
+                        </div>
+                        <div class="board-card prio-media" data-action="open-modal" data-modal="incidenciaDetail" data-name="INC-299">
+                            <div class="board-card-id">INC-299 · Media</div>
+                            <div class="board-card-title">Encomienda dañada en tránsito</div>
+                            <div class="board-card-meta"><span>ENC-1046</span><span>2 h</span></div>
+                        </div>
+                        <div class="board-card prio-baja" data-action="open-modal" data-modal="incidenciaDetail" data-name="INC-300">
+                            <div class="board-card-id">INC-300 · Baja</div>
+                            <div class="board-card-title">Cliente solicita reprogramación</div>
+                            <div class="board-card-meta"><span>ENC-1048</span><span>3 h</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="board-col" data-status="revision">
+                    <div class="board-col-head"><span class="board-col-name">Revisión</span><span class="board-col-count">1</span></div>
+                    <div class="board-items">
+                        <div class="board-card prio-media" data-action="open-modal" data-modal="incidenciaDetail" data-name="INC-295">
+                            <div class="board-card-id">INC-295 · Media</div>
+                            <div class="board-card-title">Documentación faltante en pickup</div>
+                            <div class="board-card-meta"><span>ENC-1040</span><span>Ayer</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="board-col" data-status="cerrado">
+                    <div class="board-col-head"><span class="board-col-name">Cerrado</span><span class="board-col-count">2</span></div>
+                    <div class="board-items">
+                        <div class="board-card prio-baja" data-action="open-modal" data-modal="incidenciaDetail" data-name="INC-293">
+                            <div class="board-card-id">INC-293 · Baja</div>
+                            <div class="board-card-title">Cliente reporta retraso (resuelto)</div>
+                            <div class="board-card-meta"><span>ENC-1035</span><span>2 días</span></div>
+                        </div>
+                        <div class="board-card prio-media" data-action="open-modal" data-modal="incidenciaDetail" data-name="INC-291">
+                            <div class="board-card-id">INC-291 · Media</div>
+                            <div class="board-card-title">Llanta pinchada en ruta</div>
+                            <div class="board-card-meta"><span>P-567MNO</span><span>3 días</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================================
+             PAGE: MANTENIMIENTO (EP07)
+             ============================================================ -->
+        <section class="page" data-page="mantenimiento">
+            <div class="page-header">
+                <div>
+                    <div class="page-breadcrumb">Gestión <span class="sep">/</span> Mantenimiento</div>
+                    <h1 class="page-title">Mantenimiento Preventivo y Correctivo</h1>
+                    <p class="page-subtitle">Programación, calendario y costos de mantenimiento de la flota</p>
+                </div>
+                <div class="page-actions">
+                    <button class="btn btn-ghost btn-sm">📋 Historial</button>
+                    <button class="btn btn-primary btn-sm" data-action="open-modal" data-modal="newMantenimiento">+ Programar mantenimiento</button>
+                </div>
+            </div>
+
+            <div class="stat-row">
+                <div class="stat-card"><div class="stat-card-top"><div class="stat-icon primary">⚒</div></div><div class="stat-value">7</div><div class="stat-label">Programados próx. 30 días</div></div>
+                <div class="stat-card"><div class="stat-card-top"><div class="stat-icon red">⏱</div></div><div class="stat-value">2</div><div class="stat-label">Vencidos</div></div>
+                <div class="stat-card"><div class="stat-card-top"><div class="stat-icon green">✓</div></div><div class="stat-value">14</div><div class="stat-label">Completados mes</div></div>
+                <div class="stat-card"><div class="stat-card-top"><div class="stat-icon orange">$</div></div><div class="stat-value">Q 24,800</div><div class="stat-label">Costo mes</div></div>
+            </div>
+
+            <div class="dash-grid">
+                <div class="panel">
+                    <div class="panel-head">
+                        <div class="panel-title">Calendario · Mayo 2026</div>
+                        <div class="panel-actions"><button class="btn btn-ghost btn-sm">‹</button><button class="btn btn-ghost btn-sm">›</button></div>
+                    </div>
+                    <div class="panel-body">
+                        <div class="cal-grid">
+                            <div class="cal-head">L</div><div class="cal-head">M</div><div class="cal-head">M</div><div class="cal-head">J</div><div class="cal-head">V</div><div class="cal-head">S</div><div class="cal-head">D</div>
+                            <div class="cal-day dim"><div class="cal-day-num">28</div></div>
+                            <div class="cal-day dim"><div class="cal-day-num">29</div></div>
+                            <div class="cal-day dim"><div class="cal-day-num">30</div></div>
+                            <div class="cal-day"><div class="cal-day-num">1</div></div>
+                            <div class="cal-day"><div class="cal-day-num">2</div><div class="cal-event maint">P-456 · Aceite</div></div>
+                            <div class="cal-day"><div class="cal-day-num">3</div></div>
+                            <div class="cal-day"><div class="cal-day-num">4</div></div>
+                            <div class="cal-day"><div class="cal-day-num">5</div><div class="cal-event lic">Lic. Pedro C.</div></div>
+                            <div class="cal-day"><div class="cal-day-num">6</div><div class="cal-event maint">P-567 · Frenos</div></div>
+                            <div class="cal-day"><div class="cal-day-num">7</div></div>
+                            <div class="cal-day"><div class="cal-day-num">8</div></div>
+                            <div class="cal-day"><div class="cal-day-num">9</div></div>
+                            <div class="cal-day"><div class="cal-day-num">10</div></div>
+                            <div class="cal-day"><div class="cal-day-num">11</div><div class="cal-event maint">P-234 · Llantas</div></div>
+                            <div class="cal-day"><div class="cal-day-num">12</div></div>
+                            <div class="cal-day"><div class="cal-day-num">13</div></div>
+                            <div class="cal-day"><div class="cal-day-num">14</div><div class="cal-event maint">P-123 · Aceite</div></div>
+                            <div class="cal-day"><div class="cal-day-num">15</div></div>
+                            <div class="cal-day"><div class="cal-day-num">16</div></div>
+                            <div class="cal-day"><div class="cal-day-num">17</div></div>
+                            <div class="cal-day today"><div class="cal-day-num">18</div><div class="cal-event">Hoy</div></div>
+                            <div class="cal-day"><div class="cal-day-num">19</div><div class="cal-event maint">P-890 · Revisión</div></div>
+                            <div class="cal-day"><div class="cal-day-num">20</div></div>
+                            <div class="cal-day"><div class="cal-day-num">21</div></div>
+                            <div class="cal-day"><div class="cal-day-num">22</div><div class="cal-event maint">P-789 · Aceite</div></div>
+                            <div class="cal-day"><div class="cal-day-num">23</div></div>
+                            <div class="cal-day"><div class="cal-day-num">24</div></div>
+                            <div class="cal-day"><div class="cal-day-num">25</div></div>
+                            <div class="cal-day"><div class="cal-day-num">26</div></div>
+                            <div class="cal-day"><div class="cal-day-num">27</div></div>
+                            <div class="cal-day"><div class="cal-day-num">28</div></div>
+                            <div class="cal-day"><div class="cal-day-num">29</div></div>
+                            <div class="cal-day"><div class="cal-day-num">30</div></div>
+                            <div class="cal-day"><div class="cal-day-num">31</div></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="panel">
+                    <div class="panel-head"><div class="panel-title">Próximos mantenimientos</div></div>
+                    <div class="panel-body flush">
+                        <div class="alert-item"><div class="alert-dot mid">⚒</div><div class="alert-body"><strong>P-789GHI · Cambio de aceite</strong><div class="meta">Programado 22/05/2026 · Taller Norte</div></div><div class="alert-time">4 días</div></div>
+                        <div class="alert-item"><div class="alert-dot mid">⚒</div><div class="alert-body"><strong>P-890PQR · Revisión general</strong><div class="meta">Programado 19/05/2026 · Taller Central</div></div><div class="alert-time">1 día</div></div>
+                        <div class="alert-item"><div class="alert-dot high">⚒</div><div class="alert-body"><strong>P-012YZA · Bloqueado (mant. vencido)</strong><div class="meta">Reprogramar urgente · Vencido hace 6 días</div></div><div class="alert-time">−6 d</div></div>
+                        <div class="alert-item"><div class="alert-dot low">⚒</div><div class="alert-body"><strong>P-456DEF · Cambio aceite</strong><div class="meta">Programado 02/05/2026</div></div><div class="alert-time">−16 d</div></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================================
+             PAGE: ALERTAS (EP08)
+             ============================================================ -->
+        <section class="page" data-page="alertas">
+            <div class="page-header">
+                <div>
+                    <div class="page-breadcrumb">Gestión <span class="sep">/</span> Alertas</div>
+                    <h1 class="page-title">Alertas y Notificaciones</h1>
+                    <p class="page-subtitle">Reglas de alerta automática y bandeja de notificaciones activas</p>
+                </div>
+                <div class="page-actions">
+                    <button class="btn btn-ghost btn-sm">⚙ Configurar reglas</button>
+                    <button class="btn btn-primary btn-sm" data-action="mark-all-read">✓ Marcar todo como leído</button>
+                </div>
+            </div>
+
+            <div class="stat-row">
+                <div class="stat-card"><div class="stat-card-top"><div class="stat-icon red">⚠</div></div><div class="stat-value">7</div><div class="stat-label">Activas críticas</div></div>
+                <div class="stat-card"><div class="stat-card-top"><div class="stat-icon yellow">⏱</div></div><div class="stat-value">14</div><div class="stat-label">Atención requerida</div></div>
+                <div class="stat-card"><div class="stat-card-top"><div class="stat-icon blue">ℹ</div></div><div class="stat-value">9</div><div class="stat-label">Informativas</div></div>
+                <div class="stat-card"><div class="stat-card-top"><div class="stat-icon green">✓</div></div><div class="stat-value">38</div><div class="stat-label">Resueltas hoy</div></div>
+            </div>
+
+            <div class="filters">
+                <span class="filter-chip active">Todas <span class="count">30</span></span>
+                <span class="filter-chip">Retraso de unidad <span class="count">5</span></span>
+                <span class="filter-chip">Desvío de ruta <span class="count">1</span></span>
+                <span class="filter-chip">Mantenimiento próximo <span class="count">4</span></span>
+                <span class="filter-chip">Licencia por vencer <span class="count">3</span></span>
+                <span class="filter-chip">Encomienda <span class="count">8</span></span>
+            </div>
+
+            <div class="panel">
+                <div class="panel-head"><div class="panel-title">Bandeja de alertas activas</div></div>
+                <div class="panel-body flush">
+                    <div class="alert-item" data-action="open-alert">
+                        <div class="alert-dot high">⚠</div>
+                        <div class="alert-body"><strong>Desvío crítico — P-234JKL fuera de ruta planificada</strong><div class="meta">Detectado en CA-9 km 87 · Asignado a: Andrés Ramírez · Hace 12 min</div></div>
+                        <div class="alert-time">12 min</div>
+                    </div>
+                    <div class="alert-item" data-action="open-alert">
+                        <div class="alert-dot high">⚠</div>
+                        <div class="alert-body"><strong>Mantenimiento vencido — P-012YZA bloqueado</strong><div class="meta">Mantenimiento programado para 12/05/2026 sin ejecutar · 6 días de retraso</div></div>
+                        <div class="alert-time">2 h</div>
+                    </div>
+                    <div class="alert-item" data-action="open-alert">
+                        <div class="alert-dot mid">⏱</div>
+                        <div class="alert-body"><strong>Retraso significativo — Ruta R-2403 (Cobán)</strong><div class="meta">Llegada estimada 16:55 · Original 16:43 · Tráfico en RN-7E</div></div>
+                        <div class="alert-time">28 min</div>
+                    </div>
+                    <div class="alert-item" data-action="open-alert">
+                        <div class="alert-dot mid">📄</div>
+                        <div class="alert-body"><strong>Licencia próxima a vencer — Carlos Méndez</strong><div class="meta">Tipo A · Vencimiento 02/06/2026 (15 días)</div></div>
+                        <div class="alert-time">1 h</div>
+                    </div>
+                    <div class="alert-item" data-action="open-alert">
+                        <div class="alert-dot mid">📄</div>
+                        <div class="alert-body"><strong>Licencia próxima a vencer — Pedro Castillo</strong><div class="meta">Tipo A · Vencimiento 05/05/2026 (vencida hace 13 días)</div></div>
+                        <div class="alert-time">3 d</div>
+                    </div>
+                    <div class="alert-item" data-action="open-alert">
+                        <div class="alert-dot low">🛠</div>
+                        <div class="alert-body"><strong>Mantenimiento próximo — P-789GHI</strong><div class="meta">Cambio de aceite programado 22/05/2026 (4 días)</div></div>
+                        <div class="alert-time">2 h</div>
+                    </div>
+                    <div class="alert-item" data-action="open-alert">
+                        <div class="alert-dot low">🛠</div>
+                        <div class="alert-body"><strong>Mantenimiento próximo — P-890PQR</strong><div class="meta">Revisión general programada 19/05/2026 (1 día)</div></div>
+                        <div class="alert-time">3 h</div>
+                    </div>
+                    <div class="alert-item" data-action="open-alert">
+                        <div class="alert-dot low">📦</div>
+                        <div class="alert-body"><strong>Encomienda con incidencia — ENC-1046</strong><div class="meta">Cliente: Soluciones Tech · Estado: Con incidencia · Unidad: P-234JKL</div></div>
+                        <div class="alert-time">18 min</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================================
+             PAGE: REPORTES (EP09 ext)
+             ============================================================ -->
+        <section class="page" data-page="reportes">
+            <div class="page-header">
+                <div>
+                    <div class="page-breadcrumb">Gestión <span class="sep">/</span> Reportes</div>
+                    <h1 class="page-title">Reportes</h1>
+                    <p class="page-subtitle">Indicadores operativos y exportación de información</p>
+                </div>
+            </div>
+
+            <div class="card-grid">
+                <div class="item-card" data-action="export" data-target="puntualidad">
+                    <div class="item-card-head"><div class="item-card-title">⏱ Puntualidad de rutas</div></div>
+                    <div class="item-card-meta">Cumplimiento de ETAs en rutas finalizadas, últimos 30 días.</div>
+                    <div class="item-card-stats"><div class="item-card-stat">Cumplimiento<strong>92.4 %</strong></div><div class="item-card-stat">Rutas analizadas<strong>284</strong></div></div>
+                </div>
+                <div class="item-card" data-action="export" data-target="desempeno-pilotos">
+                    <div class="item-card-head"><div class="item-card-title">⊙ Desempeño de pilotos</div></div>
+                    <div class="item-card-meta">Ranking por puntualidad, kilometraje y observaciones.</div>
+                    <div class="item-card-stats"><div class="item-card-stat">Pilotos evaluados<strong>18</strong></div><div class="item-card-stat">Top performer<strong>Luis Pérez</strong></div></div>
+                </div>
+                <div class="item-card" data-action="export" data-target="consumo-combustible">
+                    <div class="item-card-head"><div class="item-card-title">⛽ Consumo de combustible</div></div>
+                    <div class="item-card-meta">Galones/km por unidad y costo de combustible.</div>
+                    <div class="item-card-stats"><div class="item-card-stat">Galones mes<strong>3,840</strong></div><div class="item-card-stat">Costo<strong>Q 142,080</strong></div></div>
+                </div>
+                <div class="item-card" data-action="export" data-target="disponibilidad-flota">
+                    <div class="item-card-head"><div class="item-card-title">⊟ Disponibilidad de flota</div></div>
+                    <div class="item-card-meta">Tiempo activo vs en mantenimiento o fuera de servicio.</div>
+                    <div class="item-card-stats"><div class="item-card-stat">Disponibilidad<strong>84.6 %</strong></div><div class="item-card-stat">Unidades<strong>24</strong></div></div>
+                </div>
+                <div class="item-card" data-action="export" data-target="incidencias">
+                    <div class="item-card-head"><div class="item-card-title">⚠ Incidencias operativas</div></div>
+                    <div class="item-card-meta">Distribución por tipo, severidad y tiempo de resolución.</div>
+                    <div class="item-card-stats"><div class="item-card-stat">Mes actual<strong>47</strong></div><div class="item-card-stat">Tiempo medio<strong>2.4 h</strong></div></div>
+                </div>
+                <div class="item-card" data-action="export" data-target="alertas-mant">
+                    <div class="item-card-head"><div class="item-card-title">🛠 Tablero alertas + mantenimientos</div></div>
+                    <div class="item-card-meta">Resumen de alertas activas y próximos mantenimientos.</div>
+                    <div class="item-card-stats"><div class="item-card-stat">Alertas<strong>30</strong></div><div class="item-card-stat">Mant. próx.<strong>7</strong></div></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================================
+             PAGE: USUARIOS (EP01)
+             ============================================================ -->
+        <section class="page" data-page="usuarios">
+            <div class="page-header">
+                <div>
+                    <div class="page-breadcrumb">Administración <span class="sep">/</span> Usuarios y Roles</div>
+                    <h1 class="page-title">Usuarios, Roles y Permisos</h1>
+                    <p class="page-subtitle">Gestión de accesos internos del sistema</p>
+                </div>
+                <div class="page-actions">
+                    <button class="btn btn-ghost btn-sm">🔑 Permisos por rol</button>
+                    <button class="btn btn-primary btn-sm" data-action="open-modal" data-modal="newUsuario">+ Registrar usuario</button>
+                </div>
+            </div>
+
+            <div class="stat-row">
+                <div class="stat-card"><div class="stat-card-top"><div class="stat-icon primary">⚇</div></div><div class="stat-value">14</div><div class="stat-label">Usuarios activos</div></div>
+                <div class="stat-card"><div class="stat-card-top"><div class="stat-icon purple">⚙</div></div><div class="stat-value">5</div><div class="stat-label">Roles definidos</div></div>
+                <div class="stat-card"><div class="stat-card-top"><div class="stat-icon blue">↩</div></div><div class="stat-value">3</div><div class="stat-label">Cambios últimos 7 días</div></div>
+                <div class="stat-card"><div class="stat-card-top"><div class="stat-icon muted">○</div></div><div class="stat-value">2</div><div class="stat-label">Inactivos</div></div>
+            </div>
+
+            <div class="panel">
+                <div class="panel-head">
+                    <div class="panel-title">Listado de usuarios</div>
+                    <input type="text" class="filter-input" placeholder="Buscar nombre o rol…">
+                </div>
+                <div class="panel-body flush">
+                    <table class="tbl">
+                        <thead><tr><th>Usuario</th><th>Email</th><th>Rol</th><th>Estado</th><th>Último acceso</th><th></th></tr></thead>
+                        <tbody>
+                            <tr data-action="open-modal" data-modal="userDetail" data-name="Andrea Morales"><td><div class="avatar-cell"><div class="avatar sm">AM</div><div class="avatar-cell-info"><strong>Andrea Morales</strong><span>ID 001</span></div></div></td><td>andrea.morales@nova.com.gt</td><td><span class="role-pill">Gerente Operaciones</span></td><td><span class="badge success">Activo</span></td><td>Hace 5 min</td><td class="tbl-actions"><button class="tbl-action">⋮</button></td></tr>
+                            <tr data-action="open-modal" data-modal="userDetail" data-name="Roberto Sánchez"><td><div class="avatar-cell"><div class="avatar sm" style="background:linear-gradient(135deg,#06b6d4,#10b981)">RS</div><div class="avatar-cell-info"><strong>Roberto Sánchez</strong><span>ID 002</span></div></div></td><td>roberto.sanchez@nova.com.gt</td><td><span class="role-pill">Supervisor Flota</span></td><td><span class="badge success">Activo</span></td><td>Hace 22 min</td><td class="tbl-actions"><button class="tbl-action">⋮</button></td></tr>
+                            <tr data-action="open-modal" data-modal="userDetail" data-name="Patricia Aguilar"><td><div class="avatar-cell"><div class="avatar sm" style="background:linear-gradient(135deg,#ec4899,#8b5cf6)">PA</div><div class="avatar-cell-info"><strong>Patricia Aguilar</strong><span>ID 003</span></div></div></td><td>patricia.aguilar@nova.com.gt</td><td><span class="role-pill">Coordinadora Rutas</span></td><td><span class="badge success">Activo</span></td><td>Hace 1 h</td><td class="tbl-actions"><button class="tbl-action">⋮</button></td></tr>
+                            <tr data-action="open-modal" data-modal="userDetail" data-name="Fernando López"><td><div class="avatar-cell"><div class="avatar sm" style="background:linear-gradient(135deg,#f59e0b,#ef4444)">FL</div><div class="avatar-cell-info"><strong>Fernando López</strong><span>ID 004</span></div></div></td><td>fernando.lopez@nova.com.gt</td><td><span class="role-pill">Analista Operaciones</span></td><td><span class="badge success">Activo</span></td><td>Hace 2 h</td><td class="tbl-actions"><button class="tbl-action">⋮</button></td></tr>
+                            <tr data-action="open-modal" data-modal="userDetail" data-name="Verónica Pineda"><td><div class="avatar-cell"><div class="avatar sm" style="background:linear-gradient(135deg,#8b5cf6,#6366f1)">VP</div><div class="avatar-cell-info"><strong>Verónica Pineda</strong><span>ID 005</span></div></div></td><td>veronica.pineda@nova.com.gt</td><td><span class="role-pill">Admin Sistemas</span></td><td><span class="badge success">Activo</span></td><td>Hace 3 h</td><td class="tbl-actions"><button class="tbl-action">⋮</button></td></tr>
+                            <tr data-action="open-modal" data-modal="userDetail" data-name="Jorge Reyes"><td><div class="avatar-cell"><div class="avatar sm" style="background:linear-gradient(135deg,#10b981,#06b6d4)">JR</div><div class="avatar-cell-info"><strong>Jorge Reyes</strong><span>ID 006</span></div></div></td><td>jorge.reyes@nova.com.gt</td><td><span class="role-pill">Despachador</span></td><td><span class="badge muted">Inactivo</span></td><td>Hace 2 días</td><td class="tbl-actions"><button class="tbl-action">⋮</button></td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+    </main>
+</div>
+
+<!-- ============================================================
+     MODAL OVERLAY
+     ============================================================ -->
+<div class="modal-overlay" id="modalOverlay">
+    <div class="modal" id="modal">
+        <div class="modal-head">
+            <div class="modal-title" id="modalTitle">Título</div>
+            <button class="modal-close" data-action="close-modal">✕</button>
+        </div>
+        <div class="modal-body" id="modalBody">…</div>
+        <div class="modal-foot" id="modalFoot">
+            <button class="btn btn-ghost btn-sm" data-action="close-modal">Cancelar</button>
+            <button class="btn btn-primary btn-sm" data-action="confirm-modal">Guardar</button>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================
+     TOAST STACK
+     ============================================================ -->
+<div class="toast-stack" id="toastStack"></div>
+
+<script src="sistema.js"></script>
+</body>
+</html>

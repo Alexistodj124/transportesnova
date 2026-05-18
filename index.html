@@ -20,7 +20,20 @@
             <a href="#scrumban" data-view="scrumban">Scrumban</a>
             <a href="#xp"       data-view="xp">XP</a>
             <a href="#wsf"      data-view="wsf">Water-Scrum-Fall</a>
-            <a href="#pmi"      data-view="pmi">PMI</a>
+            <a href="#pmi"      data-view="pmi" class="investor-only">PMI</a>
+            <a href="sistema.html" class="nav-cta-link">Sistema Demo →</a>
+            <div class="mode-switcher" role="group" aria-label="Modo de presentación">
+                <button class="mode-btn active" data-mode="cliente" type="button" title="Modo Cliente: oculta costos internos y FTE">
+                    <span class="mode-icon">👤</span><span class="mode-label">Cliente</span>
+                </button>
+                <button class="mode-btn" data-mode="inversor" type="button" title="Modo Inversor: muestra todos los costos y márgenes">
+                    <span class="mode-icon">💼</span><span class="mode-label">Inversor</span>
+                </button>
+            </div>
+            <button class="theme-toggle" id="themeToggle" aria-label="Cambiar tema" title="Cambiar tema claro / oscuro">
+                <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+                <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+            </button>
         </div>
         <button class="nav-toggle" id="navToggle" aria-label="Menú">
             <span></span><span></span><span></span>
@@ -35,6 +48,11 @@
         <a href="#xp"       data-view="xp">XP</a>
         <a href="#wsf"      data-view="wsf">Water-Scrum-Fall</a>
         <a href="#pmi"      data-view="pmi">PMI</a>
+        <a href="sistema.html" class="nav-cta-link">Sistema Demo →</a>
+        <button class="theme-toggle" id="themeToggleMobile" aria-label="Cambiar tema">
+            <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+            <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+        </button>
     </div>
 
     <!-- ============================================================
@@ -73,7 +91,8 @@
                 </div>
                 <div class="hero-buttons animate-on-scroll">
                     <a href="#scrum"    data-view="scrum"    class="btn btn-primary">Empezar por Scrum</a>
-                    <a href="#pmi"      data-view="pmi"      class="btn btn-outline">Ver Análisis PMI</a>
+                    <a href="#pmi"      data-view="pmi"      class="btn btn-outline investor-only">Ver Análisis PMI</a>
+                    <a href="#scrumban" data-view="scrumban" class="btn btn-outline client-only">Ver Scrumban</a>
                 </div>
             </div>
         </section>
@@ -116,7 +135,9 @@
 
                 <div class="section-header animate-on-scroll" style="margin-top:4rem">
                     <span class="section-tag" style="background:var(--accent)">Tabla Comparativa</span>
-                    <h2 class="section-title">Las cifras lado a lado</h2>
+                    <h2 class="section-title investor-only">Las cifras lado a lado</h2>
+                    <h2 class="section-title client-only">Las metodologías <span class="gradient-text">lado a lado</span></h2>
+                    <p class="section-subtitle client-only">Duración, alcance, precio y equipo dedicado por cada enfoque.</p>
                 </div>
 
                 <div class="comp-table animate-on-scroll">
@@ -145,7 +166,7 @@
                             <div class="comp-cell">623 SP</div>
                             <div class="comp-cell">623 SP + Docs</div>
                         </div>
-                        <div class="comp-row">
+                        <div class="comp-row investor-only">
                             <div class="comp-cell label">Costo interno</div>
                             <div class="comp-cell"><strong>Q 514,250</strong></div>
                             <div class="comp-cell">Q 935,000</div>
@@ -154,14 +175,15 @@
                             <div class="comp-cell">Q 819,168</div>
                         </div>
                         <div class="comp-row">
-                            <div class="comp-cell label">Ingreso (venta)</div>
+                            <div class="comp-cell label investor-only">Ingreso (venta)</div>
+                            <div class="comp-cell label client-only">Precio al cliente</div>
                             <div class="comp-cell">Q 1,067,926</div>
                             <div class="comp-cell comp-best"><strong>Q 2,400,000</strong></div>
                             <div class="comp-cell">Q 1,057,719</div>
                             <div class="comp-cell">Q 1,320,000</div>
                             <div class="comp-cell">Q 1,489,397</div>
                         </div>
-                        <div class="comp-row">
+                        <div class="comp-row investor-only">
                             <div class="comp-cell label">Margen bruto</div>
                             <div class="comp-cell">Q 553,676</div>
                             <div class="comp-cell comp-best"><strong>Q 1,465,000</strong></div>
@@ -169,7 +191,7 @@
                             <div class="comp-cell">Q 805,750</div>
                             <div class="comp-cell">Q 670,229</div>
                         </div>
-                        <div class="comp-row">
+                        <div class="comp-row investor-only">
                             <div class="comp-cell label">Margen %</div>
                             <div class="comp-cell">51.85 %</div>
                             <div class="comp-cell comp-best"><strong>61.04 %</strong></div>
@@ -177,7 +199,7 @@
                             <div class="comp-cell">61.04 %</div>
                             <div class="comp-cell">45.00 %</div>
                         </div>
-                        <div class="comp-row">
+                        <div class="comp-row investor-only">
                             <div class="comp-cell label">Costo / unidad</div>
                             <div class="comp-cell">Q 825 / SP</div>
                             <div class="comp-cell">Q 7,924 / hist</div>
@@ -185,7 +207,7 @@
                             <div class="comp-cell">Q 825 / SP</div>
                             <div class="comp-cell">Precio fijo</div>
                         </div>
-                        <div class="comp-row">
+                        <div class="comp-row investor-only">
                             <div class="comp-cell label">Equipo mensual</div>
                             <div class="comp-cell">Q 46,750</div>
                             <div class="comp-cell">Q 46,750</div>
@@ -193,10 +215,18 @@
                             <div class="comp-cell">Q 46,750</div>
                             <div class="comp-cell">Q 46,750</div>
                         </div>
+                        <div class="comp-row client-only">
+                            <div class="comp-cell label">Equipo dedicado</div>
+                            <div class="comp-cell">7 personas</div>
+                            <div class="comp-cell">7 personas</div>
+                            <div class="comp-cell">7 personas</div>
+                            <div class="comp-cell">7 personas</div>
+                            <div class="comp-cell">7 personas</div>
+                        </div>
                     </div>
                 </div>
 
-                <div class="hbar-chart animate-on-scroll">
+                <div class="hbar-chart animate-on-scroll investor-only">
                     <h3 class="hbar-title">Costo Interno por Metodología (Quetzales)</h3>
                     <div class="hbar-row">
                         <div class="hbar-label">Scrum</div>
@@ -282,10 +312,15 @@
                     </div>
                 </div>
 
-                <div class="view-cta animate-on-scroll">
+                <div class="view-cta animate-on-scroll investor-only">
                     <h3>¿Quieres ver el análisis financiero PMI?</h3>
                     <p>ROI, Payback, ROA y reserva de riesgos (EMV) comparados contra la TMAR del 38% para las cinco metodologías.</p>
                     <a href="#pmi" data-view="pmi" class="btn btn-primary">Ver análisis PMI</a>
+                </div>
+                <div class="view-cta animate-on-scroll client-only">
+                    <h3>¿Te gustaría profundizar en una metodología?</h3>
+                    <p>Cada metodología tiene su propia presentación con detalle de equipo, sprints o flujo, backlog y cálculo de duración.</p>
+                    <a href="#scrumban" data-view="scrumban" class="btn btn-primary">Empezar por Scrumban</a>
                 </div>
             </div>
         </section>
@@ -317,13 +352,21 @@
                         <div class="kpi-value"><span class="counter" data-target="623">0</span><span class="kpi-unit">SP</span></div>
                         <div class="kpi-label">Story Points</div>
                     </div>
-                    <div class="kpi-card animate-on-scroll" style="animation-delay:.16s">
+                    <div class="kpi-card animate-on-scroll investor-only" style="animation-delay:.16s">
                         <div class="kpi-value">Q<span class="counter" data-target="514250">0</span></div>
                         <div class="kpi-label">Costo Interno</div>
                     </div>
-                    <div class="kpi-card animate-on-scroll" style="animation-delay:.24s">
+                    <div class="kpi-card animate-on-scroll investor-only" style="animation-delay:.24s">
                         <div class="kpi-value"><span class="counter" data-target="51.85">0</span><span class="kpi-unit">%</span></div>
                         <div class="kpi-label">Margen Bruto</div>
+                    </div>
+                    <div class="kpi-card animate-on-scroll client-only" style="animation-delay:.16s">
+                        <div class="kpi-value"><span class="counter" data-target="23">0</span><span class="kpi-unit">sprints</span></div>
+                        <div class="kpi-label">Iteraciones</div>
+                    </div>
+                    <div class="kpi-card animate-on-scroll client-only" style="animation-delay:.24s">
+                        <div class="kpi-value"><span class="counter" data-target="7">0</span><span class="kpi-unit">personas</span></div>
+                        <div class="kpi-label">Equipo Dedicado</div>
                     </div>
                 </div>
             </div>
@@ -333,8 +376,10 @@
             <div class="container">
                 <div class="section-header animate-on-scroll">
                     <span class="section-tag">Equipo</span>
-                    <h2 class="section-title">7 personas al <span class="view-gradient-text">50 % FTE</span></h2>
-                    <p class="section-subtitle">El mismo equipo modela todas las metodologías ágiles. Costo asignado al proyecto.</p>
+                    <h2 class="section-title client-only">Equipo <span class="view-gradient-text">dedicado al proyecto</span></h2>
+                    <h2 class="section-title investor-only">7 personas al <span class="view-gradient-text">50 % FTE</span></h2>
+                    <p class="section-subtitle client-only">7 profesionales asignados al proyecto durante toda su duración.</p>
+                    <p class="section-subtitle investor-only">El mismo equipo modela todas las metodologías ágiles. Costo asignado al proyecto.</p>
                 </div>
 
                 <div class="equipo-table animate-on-scroll">
@@ -386,13 +431,13 @@
                         <div class="breakdown-line"><strong>Factor de holgura</strong><span class="breakdown-value">× 1.10</span></div>
                         <div class="breakdown-line"><strong>Sprints con holgura</strong><span class="breakdown-value">22.84</span></div>
                         <div class="breakdown-line"><strong>Duración total</strong><span class="breakdown-value">10.55 meses (~11)</span></div>
-                        <div class="breakdown-line total"><strong>Costo interno por sprint</strong><span class="breakdown-value">Q 21,594</span></div>
+                        <div class="breakdown-line total investor-only"><strong>Costo interno por sprint</strong><span class="breakdown-value">Q 21,594</span></div>
                     </div>
                 </div>
 
                 <div class="financial-card animate-on-scroll">
                     <div class="financial-grid">
-                        <div class="financial-item">
+                        <div class="financial-item investor-only">
                             <div class="financial-item-label">Costo Interno</div>
                             <div class="financial-item-value">Q 514,250</div>
                             <div class="financial-item-sub">22.84 sprints × Q 21,594</div>
@@ -402,28 +447,38 @@
                             <div class="financial-item-value">Q 1,067,926</div>
                             <div class="financial-item-sub">22.84 sprints × Q 46,750</div>
                         </div>
-                        <div class="financial-item">
+                        <div class="financial-item investor-only">
                             <div class="financial-item-label">Margen Bruto</div>
                             <div class="financial-item-value">Q 553,676</div>
                             <div class="financial-item-sub">51.85 % sobre venta · Markup 107.67 %</div>
                         </div>
-                        <div class="financial-item">
+                        <div class="financial-item investor-only">
                             <div class="financial-item-label">Costo por SP</div>
                             <div class="financial-item-value">Q 825</div>
                             <div class="financial-item-sub">Q 514,250 ÷ 623 SP</div>
                         </div>
-                        <div class="financial-item">
+                        <div class="financial-item investor-only">
                             <div class="financial-item-label">ROI vs Inversión</div>
                             <div class="financial-item-value">83.5 %</div>
                             <div class="financial-item-sub">Beneficio neto Q 485,951</div>
                         </div>
-                        <div class="financial-item">
+                        <div class="financial-item investor-only">
                             <div class="financial-item-label">Payback</div>
                             <div class="financial-item-value">6.2 m</div>
                             <div class="financial-item-sub">Meses para recuperar</div>
                         </div>
+                        <div class="financial-item client-only">
+                            <div class="financial-item-label">Duración</div>
+                            <div class="financial-item-value">10.55 m</div>
+                            <div class="financial-item-sub">22.84 sprints de 2 semanas</div>
+                        </div>
+                        <div class="financial-item client-only">
+                            <div class="financial-item-label">Equipo Dedicado</div>
+                            <div class="financial-item-value">7</div>
+                            <div class="financial-item-sub">Profesionales asignados</div>
+                        </div>
                     </div>
-                    <div class="financial-verdict">
+                    <div class="financial-verdict investor-only">
                         <span class="check">✓</span>
                         Veredicto PMI: VIABLE · ROI 83.5 % &gt; TMAR 38 %
                     </div>
@@ -502,13 +557,21 @@
                         <div class="kpi-value"><span class="counter" data-target="118">0</span></div>
                         <div class="kpi-label">Historias</div>
                     </div>
-                    <div class="kpi-card animate-on-scroll" style="animation-delay:.16s">
+                    <div class="kpi-card animate-on-scroll investor-only" style="animation-delay:.16s">
                         <div class="kpi-value">Q<span class="counter" data-target="935000">0</span></div>
                         <div class="kpi-label">Costo Interno</div>
                     </div>
-                    <div class="kpi-card animate-on-scroll" style="animation-delay:.24s">
+                    <div class="kpi-card animate-on-scroll investor-only" style="animation-delay:.24s">
                         <div class="kpi-value"><span class="counter" data-target="61.04">0</span><span class="kpi-unit">%</span></div>
                         <div class="kpi-label">Margen Bruto</div>
+                    </div>
+                    <div class="kpi-card animate-on-scroll client-only" style="animation-delay:.16s">
+                        <div class="kpi-value"><span class="counter" data-target="6">0</span><span class="kpi-unit">hist/mes</span></div>
+                        <div class="kpi-label">Throughput</div>
+                    </div>
+                    <div class="kpi-card animate-on-scroll client-only" style="animation-delay:.24s">
+                        <div class="kpi-value"><span class="counter" data-target="7">0</span><span class="kpi-unit">personas</span></div>
+                        <div class="kpi-label">Equipo Dedicado</div>
                     </div>
                 </div>
             </div>
@@ -518,8 +581,10 @@
             <div class="container">
                 <div class="section-header animate-on-scroll">
                     <span class="section-tag">Equipo</span>
-                    <h2 class="section-title">Mismo equipo, <span class="view-gradient-text">flujo distinto</span></h2>
-                    <p class="section-subtitle">7 personas al 50 % FTE atendiendo trabajo en flujo continuo, sin ceremonias de sprint.</p>
+                    <h2 class="section-title client-only">Equipo <span class="view-gradient-text">en flujo continuo</span></h2>
+                    <h2 class="section-title investor-only">Mismo equipo, <span class="view-gradient-text">flujo distinto</span></h2>
+                    <p class="section-subtitle client-only">7 profesionales atendiendo trabajo en flujo continuo, sin ceremonias de sprint.</p>
+                    <p class="section-subtitle investor-only">7 personas al 50 % FTE atendiendo trabajo en flujo continuo, sin ceremonias de sprint.</p>
                 </div>
 
                 <div class="equipo-table animate-on-scroll">
@@ -638,7 +703,7 @@
 
                 <div class="financial-card animate-on-scroll">
                     <div class="financial-grid">
-                        <div class="financial-item">
+                        <div class="financial-item investor-only">
                             <div class="financial-item-label">Costo Interno</div>
                             <div class="financial-item-value">Q 935,000</div>
                             <div class="financial-item-sub">20 meses × Q 46,750</div>
@@ -648,28 +713,38 @@
                             <div class="financial-item-value">Q 2,400,000</div>
                             <div class="financial-item-sub">20 meses × Q 120,000</div>
                         </div>
-                        <div class="financial-item">
+                        <div class="financial-item investor-only">
                             <div class="financial-item-label">Margen Bruto</div>
                             <div class="financial-item-value">Q 1,465,000</div>
                             <div class="financial-item-sub">61.04 % · Markup 156.68 %</div>
                         </div>
-                        <div class="financial-item">
+                        <div class="financial-item investor-only">
                             <div class="financial-item-label">Costo / Historia</div>
                             <div class="financial-item-value">Q 7,924</div>
                             <div class="financial-item-sub">Q 935,000 ÷ 118 historias</div>
                         </div>
-                        <div class="financial-item">
+                        <div class="financial-item investor-only">
                             <div class="financial-item-label">ROI vs Inversión</div>
                             <div class="financial-item-value">139.3 %</div>
                             <div class="financial-item-sub">Beneficio neto Q 1,397,275</div>
                         </div>
-                        <div class="financial-item">
+                        <div class="financial-item investor-only">
                             <div class="financial-item-label">Payback</div>
                             <div class="financial-item-value">8.4 m</div>
                             <div class="financial-item-sub">Meses para recuperar</div>
                         </div>
+                        <div class="financial-item client-only">
+                            <div class="financial-item-label">Duración</div>
+                            <div class="financial-item-value">20 m</div>
+                            <div class="financial-item-sub">Flujo continuo sin sprints</div>
+                        </div>
+                        <div class="financial-item client-only">
+                            <div class="financial-item-label">Throughput</div>
+                            <div class="financial-item-value">6 / mes</div>
+                            <div class="financial-item-sub">Historias entregadas</div>
+                        </div>
                     </div>
-                    <div class="financial-verdict">
+                    <div class="financial-verdict investor-only">
                         <span class="check">✓</span>
                         Veredicto PMI: VIABLE · ROI 139.3 % &gt; TMAR 38 % · Mayor ROI absoluto
                     </div>
@@ -745,13 +820,21 @@
                         <div class="kpi-value"><span class="counter" data-target="623">0</span><span class="kpi-unit">SP</span></div>
                         <div class="kpi-label">Story Points</div>
                     </div>
-                    <div class="kpi-card animate-on-scroll" style="animation-delay:.16s">
+                    <div class="kpi-card animate-on-scroll investor-only" style="animation-delay:.16s">
                         <div class="kpi-value">Q<span class="counter" data-target="423088">0</span></div>
                         <div class="kpi-label">Costo Interno</div>
                     </div>
-                    <div class="kpi-card animate-on-scroll" style="animation-delay:.24s">
+                    <div class="kpi-card animate-on-scroll investor-only" style="animation-delay:.24s">
                         <div class="kpi-value"><span class="counter" data-target="60">0</span><span class="kpi-unit">%</span></div>
                         <div class="kpi-label">Margen Bruto</div>
+                    </div>
+                    <div class="kpi-card animate-on-scroll client-only" style="animation-delay:.16s">
+                        <div class="kpi-value"><span class="counter" data-target="25">0</span><span class="kpi-unit">sprints</span></div>
+                        <div class="kpi-label">Iteraciones Build</div>
+                    </div>
+                    <div class="kpi-card animate-on-scroll client-only" style="animation-delay:.24s">
+                        <div class="kpi-value"><span class="counter" data-target="7">0</span><span class="kpi-unit">personas</span></div>
+                        <div class="kpi-label">Equipo Dedicado</div>
                     </div>
                 </div>
             </div>
@@ -761,8 +844,10 @@
             <div class="container">
                 <div class="section-header animate-on-scroll">
                     <span class="section-tag">Equipo</span>
-                    <h2 class="section-title">Un equipo, <span class="view-gradient-text">dos flujos</span></h2>
-                    <p class="section-subtitle">El mismo equipo divide su capacidad entre la fase Build (sprints) y la fase Run (flujo Kanban).</p>
+                    <h2 class="section-title client-only">Equipo <span class="view-gradient-text">dedicado al proyecto</span></h2>
+                    <h2 class="section-title investor-only">Un equipo, <span class="view-gradient-text">dos flujos</span></h2>
+                    <p class="section-subtitle client-only">El mismo equipo entrega Build (features nuevas) y Run (operación) en paralelo.</p>
+                    <p class="section-subtitle investor-only">El mismo equipo divide su capacidad entre la fase Build (sprints) y la fase Run (flujo Kanban).</p>
                 </div>
 
                 <div class="capacity-split animate-on-scroll">
@@ -771,9 +856,13 @@
                         <div class="capacity-build">BUILD 70 %</div>
                         <div class="capacity-run">RUN 30 %</div>
                     </div>
-                    <div class="split-stats">
+                    <div class="split-stats investor-only">
                         <div class="split-stat">Costo Build mensual<strong>Q 32,725</strong></div>
                         <div class="split-stat">Costo Run mensual<strong>Q 14,025</strong></div>
+                    </div>
+                    <div class="split-stats client-only">
+                        <div class="split-stat">Capacidad Build<strong>70 %</strong></div>
+                        <div class="split-stat">Capacidad Run<strong>30 %</strong></div>
                     </div>
                 </div>
 
@@ -844,14 +933,14 @@
                 <div class="costos-breakdown animate-on-scroll">
                     <h3 class="breakdown-title">Cálculos del proyecto</h3>
                     <div class="breakdown-formula">
-                        <code>Precio Build</code> <span class="eq">+</span> <code>Precio Run</code> <span class="eq">=</span> <code>Ingreso total</code>, con margen objetivo del 60 %.
+                        <code>Precio Build</code> <span class="eq">+</span> <code>Precio Run</code> <span class="eq">=</span> <code>Ingreso total</code><span class="investor-only">, con margen objetivo del 60 %</span>.
                     </div>
                     <div class="breakdown-list">
                         <div class="breakdown-line"><strong>Story Points totales</strong><span class="breakdown-value">623 SP</span></div>
                         <div class="breakdown-line"><strong>Sprints (sin holgura)</strong><span class="breakdown-value">20.77</span></div>
                         <div class="breakdown-line"><strong>Sprints con holgura 1.2×</strong><span class="breakdown-value">25</span></div>
-                        <div class="breakdown-line"><strong>Costo Build mensual</strong><span class="breakdown-value">Q 32,725</span></div>
-                        <div class="breakdown-line"><strong>Costo Run mensual</strong><span class="breakdown-value">Q 14,025</span></div>
+                        <div class="breakdown-line investor-only"><strong>Costo Build mensual</strong><span class="breakdown-value">Q 32,725</span></div>
+                        <div class="breakdown-line investor-only"><strong>Costo Run mensual</strong><span class="breakdown-value">Q 14,025</span></div>
                         <div class="breakdown-line"><strong>Precio Build mensual</strong><span class="breakdown-value">Q 81,813</span></div>
                         <div class="breakdown-line"><strong>Precio Run mensual</strong><span class="breakdown-value">Q 35,063</span></div>
                         <div class="breakdown-line"><strong>Precio Build por sprint</strong><span class="breakdown-value">Q 40,906</span></div>
@@ -861,7 +950,7 @@
 
                 <div class="financial-card animate-on-scroll">
                     <div class="financial-grid">
-                        <div class="financial-item">
+                        <div class="financial-item investor-only">
                             <div class="financial-item-label">Costo Interno</div>
                             <div class="financial-item-value">Q 423,088</div>
                             <div class="financial-item-sub">El más bajo de las 5 metodologías</div>
@@ -871,17 +960,17 @@
                             <div class="financial-item-value">Q 1,057,719</div>
                             <div class="financial-item-sub">Build + Run combinados</div>
                         </div>
-                        <div class="financial-item">
+                        <div class="financial-item investor-only">
                             <div class="financial-item-label">Margen Bruto</div>
                             <div class="financial-item-value">Q 634,631</div>
                             <div class="financial-item-sub">60 % sobre venta · Markup 150 %</div>
                         </div>
-                        <div class="financial-item">
+                        <div class="financial-item investor-only">
                             <div class="financial-item-label">ROI vs Inversión</div>
                             <div class="financial-item-value">115.5 %</div>
                             <div class="financial-item-sub">Beneficio neto Q 566,906</div>
                         </div>
-                        <div class="financial-item">
+                        <div class="financial-item investor-only">
                             <div class="financial-item-label">Payback</div>
                             <div class="financial-item-value">6.0 m</div>
                             <div class="financial-item-sub">El más rápido tras XP</div>
@@ -891,8 +980,13 @@
                             <div class="financial-item-value">12.5 m</div>
                             <div class="financial-item-sub">+ Run continuo en paralelo</div>
                         </div>
+                        <div class="financial-item client-only">
+                            <div class="financial-item-label">Equipo</div>
+                            <div class="financial-item-value">7</div>
+                            <div class="financial-item-sub">Profesionales dedicados</div>
+                        </div>
                     </div>
-                    <div class="financial-verdict">
+                    <div class="financial-verdict investor-only">
                         <span class="check">✓</span>
                         Veredicto PMI: VIABLE · ROI 115.5 % &gt; TMAR 38 % · Mejor balance costo/valor
                     </div>
@@ -968,13 +1062,21 @@
                         <div class="kpi-value"><span class="counter" data-target="623">0</span><span class="kpi-unit">SP</span></div>
                         <div class="kpi-label">Story Points</div>
                     </div>
-                    <div class="kpi-card animate-on-scroll" style="animation-delay:.16s">
+                    <div class="kpi-card animate-on-scroll investor-only" style="animation-delay:.16s">
                         <div class="kpi-value">Q<span class="counter" data-target="514250">0</span></div>
                         <div class="kpi-label">Costo Interno</div>
                     </div>
-                    <div class="kpi-card animate-on-scroll" style="animation-delay:.24s">
+                    <div class="kpi-card animate-on-scroll investor-only" style="animation-delay:.24s">
                         <div class="kpi-value"><span class="counter" data-target="61.04">0</span><span class="kpi-unit">%</span></div>
                         <div class="kpi-label">Margen Bruto</div>
+                    </div>
+                    <div class="kpi-card animate-on-scroll client-only" style="animation-delay:.16s">
+                        <div class="kpi-value"><span class="counter" data-target="23">0</span><span class="kpi-unit">sprints</span></div>
+                        <div class="kpi-label">Iteraciones</div>
+                    </div>
+                    <div class="kpi-card animate-on-scroll client-only" style="animation-delay:.24s">
+                        <div class="kpi-value"><span class="counter" data-target="7">0</span><span class="kpi-unit">personas</span></div>
+                        <div class="kpi-label">Equipo Dedicado</div>
                     </div>
                 </div>
             </div>
@@ -984,8 +1086,10 @@
             <div class="container">
                 <div class="section-header animate-on-scroll">
                     <span class="section-tag">Equipo</span>
-                    <h2 class="section-title">Programadores <span class="view-gradient-text">en pareja</span></h2>
-                    <p class="section-subtitle">Mismo equipo de 7 personas al 50 % FTE. La diferencia está en las prácticas: dos desarrolladores comparten cada tarjeta.</p>
+                    <h2 class="section-title client-only">Programadores <span class="view-gradient-text">en pareja</span></h2>
+                    <h2 class="section-title investor-only">Programadores <span class="view-gradient-text">en pareja</span></h2>
+                    <p class="section-subtitle client-only">7 profesionales dedicados al proyecto, trabajando en pareja para máxima calidad del código.</p>
+                    <p class="section-subtitle investor-only">Mismo equipo de 7 personas al 50 % FTE. La diferencia está en las prácticas: dos desarrolladores comparten cada tarjeta.</p>
                 </div>
                 <div class="equipo-table animate-on-scroll">
                     <div class="equipo-row equipo-head"><div>Rol</div><div>Descripción</div><div></div><div>FTE</div><div>Costo asignado</div></div>
@@ -1037,8 +1141,11 @@
 
                 <div class="costos-breakdown animate-on-scroll">
                     <h3 class="breakdown-title">Cálculos del proyecto</h3>
-                    <div class="breakdown-formula">
+                    <div class="breakdown-formula investor-only">
                         <code>Burn rate mensual</code> <span class="eq">÷</span> <code>(1 − margen)</code> <span class="eq">=</span> <code>precio mensual al cliente</code>
+                    </div>
+                    <div class="breakdown-formula client-only">
+                        <code>SP totales</code> <span class="eq">÷</span> <code>velocidad del equipo</code> <span class="eq">=</span> <code>sprints totales</code> <span class="eq">→</span> <code>duración</code>
                     </div>
                     <div class="breakdown-list">
                         <div class="breakdown-line"><strong>Story Points totales</strong><span class="breakdown-value">623 SP</span></div>
@@ -1046,16 +1153,16 @@
                         <div class="breakdown-line"><strong>Duración del sprint</strong><span class="breakdown-value">2 semanas</span></div>
                         <div class="breakdown-line"><strong>Sprints con holgura 1.1×</strong><span class="breakdown-value">22.84</span></div>
                         <div class="breakdown-line"><strong>Duración del proyecto</strong><span class="breakdown-value">10.55 meses (~11)</span></div>
-                        <div class="breakdown-line"><strong>Burn rate mensual</strong><span class="breakdown-value">Q 46,750</span></div>
-                        <div class="breakdown-line"><strong>Margen objetivo</strong><span class="breakdown-value">60 %</span></div>
-                        <div class="breakdown-line"><strong>Precio cliente mensual (calculado)</strong><span class="breakdown-value">Q 116,875</span></div>
+                        <div class="breakdown-line investor-only"><strong>Burn rate mensual</strong><span class="breakdown-value">Q 46,750</span></div>
+                        <div class="breakdown-line investor-only"><strong>Margen objetivo</strong><span class="breakdown-value">60 %</span></div>
+                        <div class="breakdown-line investor-only"><strong>Precio cliente mensual (calculado)</strong><span class="breakdown-value">Q 116,875</span></div>
                         <div class="breakdown-line total"><strong>Precio cliente mensual (acordado)</strong><span class="breakdown-value">Q 120,000</span></div>
                     </div>
                 </div>
 
                 <div class="financial-card animate-on-scroll">
                     <div class="financial-grid">
-                        <div class="financial-item">
+                        <div class="financial-item investor-only">
                             <div class="financial-item-label">Costo Interno</div>
                             <div class="financial-item-value">Q 514,250</div>
                             <div class="financial-item-sub">11 meses × Q 46,750</div>
@@ -1065,28 +1172,38 @@
                             <div class="financial-item-value">Q 1,320,000</div>
                             <div class="financial-item-sub">11 meses × Q 120,000</div>
                         </div>
-                        <div class="financial-item">
+                        <div class="financial-item investor-only">
                             <div class="financial-item-label">Margen Bruto</div>
                             <div class="financial-item-value">Q 805,750</div>
                             <div class="financial-item-sub">61.04 % sobre venta</div>
                         </div>
-                        <div class="financial-item">
+                        <div class="financial-item investor-only">
                             <div class="financial-item-label">ROI vs Inversión</div>
                             <div class="financial-item-value">126.8 %</div>
                             <div class="financial-item-sub">Beneficio neto Q 738,025</div>
                         </div>
-                        <div class="financial-item">
+                        <div class="financial-item investor-only">
                             <div class="financial-item-label">Payback</div>
                             <div class="financial-item-value">4.85 m</div>
                             <div class="financial-item-sub">El más rápido de las 5</div>
                         </div>
-                        <div class="financial-item">
+                        <div class="financial-item investor-only">
                             <div class="financial-item-label">Costo por SP</div>
                             <div class="financial-item-value">Q 825</div>
                             <div class="financial-item-sub">Mismo que Scrum</div>
                         </div>
+                        <div class="financial-item client-only">
+                            <div class="financial-item-label">Duración</div>
+                            <div class="financial-item-value">11 m</div>
+                            <div class="financial-item-sub">Sprints de 2 semanas</div>
+                        </div>
+                        <div class="financial-item client-only">
+                            <div class="financial-item-label">Equipo</div>
+                            <div class="financial-item-value">7</div>
+                            <div class="financial-item-sub">Pair programming</div>
+                        </div>
                     </div>
-                    <div class="financial-verdict">
+                    <div class="financial-verdict investor-only">
                         <span class="check">✓</span>
                         Veredicto PMI: VIABLE · ROI 126.8 % &gt; TMAR 38 % · Mejor payback (4.85 m)
                     </div>
@@ -1166,9 +1283,13 @@
                         <div class="kpi-value">Q<span class="counter" data-target="1489397">0</span></div>
                         <div class="kpi-label">Precio Fijo</div>
                     </div>
-                    <div class="kpi-card animate-on-scroll" style="animation-delay:.24s">
+                    <div class="kpi-card animate-on-scroll investor-only" style="animation-delay:.24s">
                         <div class="kpi-value"><span class="counter" data-target="45">0</span><span class="kpi-unit">%</span></div>
                         <div class="kpi-label">Margen Bruto</div>
+                    </div>
+                    <div class="kpi-card animate-on-scroll client-only" style="animation-delay:.24s">
+                        <div class="kpi-value"><span class="counter" data-target="7">0</span><span class="kpi-unit">personas</span></div>
+                        <div class="kpi-label">Equipo Dedicado</div>
                     </div>
                 </div>
             </div>
@@ -1189,10 +1310,12 @@
                         <div class="wsf-phase-desc">Cascada inicial: análisis de negocio profundo, diseño arquitectónico formal, contratos. Devs aún no están activos.</div>
                         <div class="wsf-phase-stats">
                             <div class="wsf-phase-stat">Duración<strong>2 meses</strong></div>
-                            <div class="wsf-phase-stat">Mensual<strong>Q 52,750</strong></div>
-                            <div class="wsf-phase-stat" style="grid-column:1/-1">Costo total<strong style="color:#60a5fa">Q 105,500</strong></div>
+                            <div class="wsf-phase-stat investor-only">Mensual<strong>Q 52,750</strong></div>
+                            <div class="wsf-phase-stat investor-only" style="grid-column:1/-1">Costo total<strong style="color:#60a5fa">Q 105,500</strong></div>
+                            <div class="wsf-phase-stat client-only">Foco<strong>Análisis</strong></div>
                         </div>
-                        <div class="wsf-phase-team">PO (100 %) · Sr Cloud (100 %) · Sr DevOps (50 %) · SM (50 %)</div>
+                        <div class="wsf-phase-team investor-only">PO (100 %) · Sr Cloud (100 %) · Sr DevOps (50 %) · SM (50 %)</div>
+                        <div class="wsf-phase-team client-only">Product Owner, Scrum Master y Seniors dedicados al análisis y diseño.</div>
                     </div>
                     <div class="wsf-phase" data-phase="scrum">
                         <div class="wsf-phase-num">FASE 2</div>
@@ -1200,10 +1323,12 @@
                         <div class="wsf-phase-desc">Desarrollo iterativo ágil. Equipo completo activo, sprints de 2 semanas con velocidad 30 SP / sprint y holgura 1.1×.</div>
                         <div class="wsf-phase-stats">
                             <div class="wsf-phase-stat">Duración<strong>10.55 meses</strong></div>
-                            <div class="wsf-phase-stat">Mensual<strong>Q 46,750</strong></div>
-                            <div class="wsf-phase-stat" style="grid-column:1/-1">Costo total<strong style="color:#a5b4fc">Q 493,268</strong></div>
+                            <div class="wsf-phase-stat investor-only">Mensual<strong>Q 46,750</strong></div>
+                            <div class="wsf-phase-stat investor-only" style="grid-column:1/-1">Costo total<strong style="color:#a5b4fc">Q 493,268</strong></div>
+                            <div class="wsf-phase-stat client-only">Sprints<strong>22.84</strong></div>
                         </div>
-                        <div class="wsf-phase-team">Equipo completo (7 personas al 50 % FTE)</div>
+                        <div class="wsf-phase-team investor-only">Equipo completo (7 personas al 50 % FTE)</div>
+                        <div class="wsf-phase-team client-only">Equipo completo (7 personas dedicadas al proyecto)</div>
                     </div>
                     <div class="wsf-phase" data-phase="fall">
                         <div class="wsf-phase-num">FASE 3</div>
@@ -1211,16 +1336,18 @@
                         <div class="wsf-phase-desc">Cascada final: QA intensivo, UAT formal, despliegue a producción, capacitación. Devs salen del proyecto.</div>
                         <div class="wsf-phase-stats">
                             <div class="wsf-phase-stat">Duración<strong>1.5 meses</strong></div>
-                            <div class="wsf-phase-stat">Mensual<strong>Q 43,600</strong></div>
-                            <div class="wsf-phase-stat" style="grid-column:1/-1">Costo total<strong style="color:#fbbf24">Q 65,400</strong></div>
+                            <div class="wsf-phase-stat investor-only">Mensual<strong>Q 43,600</strong></div>
+                            <div class="wsf-phase-stat investor-only" style="grid-column:1/-1">Costo total<strong style="color:#fbbf24">Q 65,400</strong></div>
+                            <div class="wsf-phase-stat client-only">Foco<strong>Despliegue</strong></div>
                         </div>
-                        <div class="wsf-phase-team">QA (100 %) · Sr DevOps (100 %) · Sr Cloud (100 %) · PO (30 %)</div>
+                        <div class="wsf-phase-team investor-only">QA (100 %) · Sr DevOps (100 %) · Sr Cloud (100 %) · PO (30 %)</div>
+                        <div class="wsf-phase-team client-only">QA, Seniors y PO en pruebas finales, UAT y go-live.</div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="section section-dark">
+        <section class="section section-dark investor-only">
             <div class="container">
                 <div class="section-header animate-on-scroll">
                     <span class="section-tag">Costos Extra</span>
@@ -1251,6 +1378,26 @@
             </div>
         </section>
 
+        <section class="section section-dark client-only">
+            <div class="container">
+                <div class="section-header animate-on-scroll">
+                    <span class="section-tag">Entregables Formales</span>
+                    <h2 class="section-title">Lo que incluye el <span class="view-gradient-text">contrato</span></h2>
+                    <p class="section-subtitle">Documentación, auditorías y soporte adicionales al desarrollo — todo bajo precio fijo cerrado.</p>
+                </div>
+
+                <div class="wsf-extras animate-on-scroll">
+                    <div class="wsf-extra"><div class="wsf-extra-phase">Water + Fall</div><div class="wsf-extra-name">Documentación formal extendida</div><div class="wsf-extra-value" style="color:var(--text-muted)">Planes y manuales (PMBOK)</div></div>
+                    <div class="wsf-extra"><div class="wsf-extra-phase">Water</div><div class="wsf-extra-name">Análisis de negocio profundo</div><div class="wsf-extra-value" style="color:var(--text-muted)">Pre-desarrollo</div></div>
+                    <div class="wsf-extra"><div class="wsf-extra-phase">Water</div><div class="wsf-extra-name">Diseño arquitectónico formal</div><div class="wsf-extra-value" style="color:var(--text-muted)">Arquitectura previa</div></div>
+                    <div class="wsf-extra"><div class="wsf-extra-phase">Fall</div><div class="wsf-extra-name">Auditoría externa de seguridad</div><div class="wsf-extra-value" style="color:var(--text-muted)">Pre-producción</div></div>
+                    <div class="wsf-extra"><div class="wsf-extra-phase">Fall</div><div class="wsf-extra-name">UAT formal con cliente</div><div class="wsf-extra-value" style="color:var(--text-muted)">Pilotos y operadores</div></div>
+                    <div class="wsf-extra"><div class="wsf-extra-phase">Fall</div><div class="wsf-extra-name">Capacitación de usuarios</div><div class="wsf-extra-value" style="color:var(--text-muted)">Pilotos, supervisores</div></div>
+                    <div class="wsf-extra"><div class="wsf-extra-phase">Post-Fall</div><div class="wsf-extra-name">Soporte hypercare 1er mes</div><div class="wsf-extra-value" style="color:var(--text-muted)">Guardia post go-live</div></div>
+                </div>
+            </div>
+        </section>
+
         <section class="section">
             <div class="container">
                 <div class="section-header animate-on-scroll">
@@ -1261,7 +1408,7 @@
 
                 <div class="financial-card animate-on-scroll">
                     <div class="financial-grid">
-                        <div class="financial-item">
+                        <div class="financial-item investor-only">
                             <div class="financial-item-label">Costo Total Interno</div>
                             <div class="financial-item-value">Q 819,168</div>
                             <div class="financial-item-sub">3 fases + costos extra</div>
@@ -1269,9 +1416,10 @@
                         <div class="financial-item">
                             <div class="financial-item-label">Precio Fijo al Cliente</div>
                             <div class="financial-item-value">Q 1,489,397</div>
-                            <div class="financial-item-sub">Costo ÷ (1 − 0.45)</div>
+                            <div class="financial-item-sub investor-only">Costo ÷ (1 − 0.45)</div>
+                            <div class="financial-item-sub client-only">Contrato cerrado, sin variaciones</div>
                         </div>
-                        <div class="financial-item">
+                        <div class="financial-item investor-only">
                             <div class="financial-item-label">Margen Bruto</div>
                             <div class="financial-item-value">Q 670,229</div>
                             <div class="financial-item-sub">45 % sobre venta · Markup 81.82 %</div>
@@ -1281,18 +1429,28 @@
                             <div class="financial-item-value">14.05 m</div>
                             <div class="financial-item-sub">La más larga (incluye cascadas)</div>
                         </div>
-                        <div class="financial-item">
+                        <div class="financial-item investor-only">
                             <div class="financial-item-label">ROI vs Inversión</div>
                             <div class="financial-item-value">67.9 %</div>
                             <div class="financial-item-sub">Beneficio neto Q 602,504</div>
                         </div>
-                        <div class="financial-item">
+                        <div class="financial-item investor-only">
                             <div class="financial-item-label">Payback</div>
                             <div class="financial-item-value">8.9 m</div>
                             <div class="financial-item-sub">Meses para recuperar</div>
                         </div>
+                        <div class="financial-item client-only">
+                            <div class="financial-item-label">Fases</div>
+                            <div class="financial-item-value">3</div>
+                            <div class="financial-item-sub">Water → Scrum → Fall</div>
+                        </div>
+                        <div class="financial-item client-only">
+                            <div class="financial-item-label">Equipo</div>
+                            <div class="financial-item-value">7</div>
+                            <div class="financial-item-sub">Equipo dedicado por fase</div>
+                        </div>
                     </div>
-                    <div class="financial-verdict">
+                    <div class="financial-verdict investor-only">
                         <span class="check">✓</span>
                         Veredicto PMI: VIABLE · ROI 67.9 % &gt; TMAR 38 % · Cumple gobierno corporativo
                     </div>
@@ -1576,6 +1734,11 @@
             </div>
         </section>
     </main>
+
+    <div class="mode-indicator" id="modeIndicator" aria-live="polite">
+        <span class="mode-indicator-dot"></span>
+        Mostrando vista: <strong>Cliente</strong>
+    </div>
 
     <footer class="footer">
         Transportes NOVA · Análisis comparativo basado en backlog real de 118 historias y 623 SP · 10 épicas · 5 metodologías evaluadas
